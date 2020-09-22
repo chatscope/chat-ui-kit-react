@@ -1,0 +1,33 @@
+name: build
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+      - name: Setup Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12
+          registry-url: https://registry.npmjs.org/
+          scope: '@chatscope'
+      - name: Install dependencies
+        run: yarn
+      - name: Build
+        run: yarn build
+      - name: Publish package
+        env:
+          GITHUB_TOKEN: ${{secrets.RELEASE_TOKEN}}
+          NPM_TOKEN: ${{secrets.NPM_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
+          GIT_AUTHOR_NAME: supersnager
+          GIT_AUTHOR_EMAIL: ${{secrets.GIT_AUTHOR_EMAIL}}
+          GIT_COMMITTER_NAME: supersnager
+          GIT_COMMITTER_EMAIL: ${{secrets.GIT_AUTHOR_EMAIL}}
+        run: npx semantic-release
