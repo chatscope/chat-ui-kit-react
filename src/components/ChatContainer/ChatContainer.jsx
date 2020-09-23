@@ -24,7 +24,7 @@ export const ChatContainer = ({ children, className, ...rest }) => {
   ]);
 
   return (
-    <div {...rest} className={classNames(cName, className)}>
+    <div {...rest} className={classNames(cName, className)} data-low={"aaa"}>
       {header}
       {messageList}
       {messageInput}

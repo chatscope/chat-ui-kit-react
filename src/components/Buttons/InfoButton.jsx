@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faInfoCircle } from "@fortawesome/free-solid-svg-icons";
+import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 
 export const InfoButton = ({ className, children, ...rest }) => {
   const cName = `${prefix}-button--info`;

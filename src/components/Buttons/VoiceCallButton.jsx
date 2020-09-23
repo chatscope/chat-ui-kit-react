@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons";
+import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons/faPhoneAlt";
 
 export const VoiceCallButton = ({ className, children, ...rest }) => {
   const cName = `${prefix}-button--voicecall`;

@@ -2,7 +2,7 @@ import React from "react";
 import cName from "./cName";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faEllipsisV } from "@fortawesome/free-solid-svg-icons";
+import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import PropTypes from "prop-types";
 
 export const ConversationOperations = ({

@@ -4,12 +4,10 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faArrowUp,
-  faArrowRight,
-  faArrowDown,
-  faArrowLeft,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowUp } from "@fortawesome/free-solid-svg-icons/faArrowUp";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
+import { faArrowDown } from "@fortawesome/free-solid-svg-icons/faArrowDown";
+import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 
 export const ArrowButton = ({ className, direction, children, ...rest }) => {
   const cName = `${prefix}-button--arrow`;

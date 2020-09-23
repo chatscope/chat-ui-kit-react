@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faUserPlus } from "@fortawesome/free-solid-svg-icons";
+import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
 
 export const AddUserButton = ({ className, children, ...rest }) => {
   const cName = `${prefix}-button--adduser`;

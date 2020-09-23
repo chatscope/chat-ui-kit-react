@@ -4,7 +4,7 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faPaperPlane } from "@fortawesome/free-solid-svg-icons";
+import { faPaperPlane } from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 
 export const SendButton = ({ className, children, ...rest }) => {
   const cName = `${prefix}-button--send`;

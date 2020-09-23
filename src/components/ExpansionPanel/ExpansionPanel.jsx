@@ -3,8 +3,8 @@ import PropTypes from "prop-types";
 import { prefix } from "../settings";
 import classNames from "classnames";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faChevronLeft } from "@fortawesome/free-solid-svg-icons";
-import { faChevronDown } from "@fortawesome/free-solid-svg-icons";
+import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
+import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 
 export const ExpansionPanel = ({
   children,
