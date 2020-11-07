@@ -1,7 +1,7 @@
 import React, { useMemo } from "react";
 import PropTypes from "prop-types";
 import { prefix } from "../settings";
-import PerfectScrollbar from "react-perfect-scrollbar";
+import PerfectScrollbar from "../Scroll";
 import classNames from "classnames";
 import Overlay from "../Overlay";
 import Loader from "../Loader";

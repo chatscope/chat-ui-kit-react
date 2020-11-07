@@ -13,7 +13,7 @@ import { prefix } from "../settings";
 import ContentEditable from "../ContentEditable";
 import SendButton from "../Buttons/SendButton";
 import AttachmentButton from "../Buttons/AttachmentButton";
-import PerfectScrollbar from "react-perfect-scrollbar";
+import PerfectScrollbar from "../Scroll";
 
 // Because container depends on fancyScroll
 // it must be wrapped in additional container

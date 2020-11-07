@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { allowedChildren, getChildren } from "../utils";
 import { prefix } from "../settings";
-import PerfectScrollbar from "react-perfect-scrollbar";
+import PerfectScrollbar from "../Scroll";
 import Loader from "../Loader";
 import Overlay from "../Overlay";
 import Message from "../Message";
@@ -14,22 +14,34 @@ import MessageListContent from "./MessageListContent";
 class MessageListInner extends React.Component {
   constructor(props) {
     super(props);
+
     this.scrollPointRef = React.createRef();
     this.containerRef = React.createRef();
     this.scrollRef = React.createRef();
     this.lastClientHeight = 0;
+    this.preventScrollTop = false;
+    this.resizeObserver = undefined;
+    this.scrollTicking = false;
+    this.resizeTicking = false;
+    this.noScroll = undefined;
   }
 
   getSnapshotBeforeUpdate() {
     const list = this.containerRef.current;
 
-    const sticky = list.scrollHeight === list.scrollTop + list.clientHeight;
+    const topHeight = Math.round(list.scrollTop + list.clientHeight);
+    // 1 px fix for firefox
+    const sticky =
+      list.scrollHeight === topHeight ||
+      list.scrollHeight + 1 === topHeight ||
+      list.scrollHeight - 1 === topHeight;
 
     return {
       sticky,
       clientHeight: list.clientHeight,
       scrollHeight: list.scrollHeight,
       lastMessageOrGroup: this.getLastMessageOrGroup(),
+      diff: list.scrollHeight - list.scrollTop,
     };
   }
 
@@ -42,30 +54,107 @@ class MessageListInner extends React.Component {
     this.scrollRef.current.updateScroll();
   };
 
+  handleContainerResize = () => {
+    if (this.resizeTicking === false) {
+      window.requestAnimationFrame(() => {
+        const list = this.containerRef.current;
+
+        const currentHeight = list.clientHeight;
+
+        const diff = currentHeight - this.lastClientHeight;
+
+        if (diff >= 1) {
+          // Because fractional
+
+          if (this.preventScrollTop === false) {
+            list.scrollTop = Math.round(list.scrollTop) - diff;
+          }
+        } else {
+          list.scrollTop = list.scrollTop - diff;
+        }
+
+        this.lastClientHeight = list.clientHeight;
+
+        this.scrollRef.current.updateScroll();
+
+        this.resizeTicking = false;
+      });
+
+      this.resizeTicking = true;
+    }
+  };
+
+  isSticked = () => {
+    const list = this.containerRef.current;
+
+    return list.scrollHeight === Math.round(list.scrollTop + list.clientHeight);
+  };
+
+  handleScroll = () => {
+    if (this.scrollTicking === false) {
+      window.requestAnimationFrame(() => {
+        if (this.noScroll === false) {
+          this.preventScrollTop = this.isSticked();
+        } else {
+          this.noScroll = false;
+        }
+
+        this.scrollTicking = false;
+      });
+
+      this.scrollTicking = true;
+    }
+  };
+
   componentDidMount() {
     // Set scrollbar to bottom on start (getSnaphotBeforeUpdate is not invoked on mount)
     this.scrollToEnd();
 
+    this.lastClientHeight = this.containerRef.current.clientHeight;
+
     window.addEventListener("resize", this.handleResize);
+
+    this.resizeObserver = new ResizeObserver(this.handleContainerResize);
+    this.resizeObserver.observe(this.containerRef.current);
+    this.containerRef.current.addEventListener("scroll", this.handleScroll);
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
     if (typeof snapshot !== "undefined") {
       const list = this.containerRef.current;
 
+      const last = this.getLastMessageOrGroup();
+      if (last === snapshot.lastMessageOrGroup) {
+        list.scrollTop =
+          list.scrollHeight -
+          snapshot.diff +
+          (this.lastClientHeight - list.clientHeight);
+      }
+
       if (snapshot.sticky === true) {
         this.scrollToEnd();
+        this.preventScrollTop = true;
       } else {
         if (snapshot.clientHeight < this.lastClientHeight) {
-          if (list.scrollHeight === list.scrollTop + this.lastClientHeight) {
+          // If was sticky because scrollHeight is not changing, so here will be equal to lastHeight plus current scrollTop
+          // 1px fix id for firefox
+          const sHeight = list.scrollTop + this.lastClientHeight;
+          if (
+            list.scrollHeight === sHeight ||
+            list.scrollHeight + 1 === sHeight ||
+            list.scrollHeight - 1 === sHeight
+          ) {
             this.scrollToEnd();
+            this.preventScrollTop = true;
+          } else {
+            this.preventScrollTop = false;
           }
         } else {
+          this.preventScrollTop = false;
           const last = this.getLastMessageOrGroup();
 
           if (last === snapshot.lastMessageOrGroup) {
             // New elements were not added at end
-
             // New elements were added at start
             if (
               list.scrollTop === 0 &&
@@ -83,6 +172,8 @@ class MessageListInner extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
+    this.resizeObserver.disconnect();
+    this.containerRef.current.removeEventListener("scroll", this.handleScroll);
   }
 
   scrollToEnd() {
@@ -103,6 +194,10 @@ class MessageListInner extends React.Component {
     }
 
     this.lastClientHeight = list.clientHeight;
+
+    // Important flag! Blocks strange Chrome mobile behaviour - automatic scroll.
+    // Chrome mobile sometimes trigger scroll when new content is entered to MessageInput. It's probably Chrome Bug - sth related with overflow-anchor
+    this.noScroll = true;
   }
 
   getLastMessageOrGroup = () =>
@@ -146,6 +241,11 @@ class MessageListInner extends React.Component {
           containerRef={(ref) => (this.containerRef.current = ref)}
           options={{ suppressScrollX: true }}
           {...{ [`data-${prefix}-message-list`]: "" }}
+          style={{
+            overscrollBehaviorY: "none",
+            overflowAnchor: "auto",
+            touchAction: "none",
+          }}
         >
           {customContent ? customContent : children}
           <div
@@ -153,7 +253,6 @@ class MessageListInner extends React.Component {
             ref={this.scrollPointRef}
           ></div>
         </PerfectScrollbar>
-
         {typeof typingIndicator !== "undefined" && (
           <div className={`${cName}__typing-indicator-container`}>
             {typingIndicator}
