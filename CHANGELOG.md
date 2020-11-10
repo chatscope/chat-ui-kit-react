@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.0.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.0.2...v1.0.3) (2020-11-10)
+
+
+### Bug Fixes
+
+* better scroll handling ([6f60d88](https://github.com/chatscope/chat-ui-kit-react/commit/6f60d8867513f017c999691a3c1d30e1b46c6748))
+
 ## [1.0.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.0.1...v1.0.2) (2020-09-23)
 
 
