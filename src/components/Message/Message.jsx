@@ -1,30 +1,55 @@
 import React from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
-import { allowedChildren, getChildren } from "../utils";
+import { allowedChildren, getChildren, getComponentName } from "../utils";
 import { prefix } from "../settings";
 import Avatar from "../Avatar";
 import MessageHeader from "./MessageHeader";
 import MessageFooter from "./MessageFooter";
+import MessageCustomContent from "./MessageCustomContent";
+import MessageImageContent from "./MessageImageContent";
+import MessageHtmlContent from "./MessageHtmlContent";
+import MessageTextContent from "./MessageTextContent";
 
 /**
  * Chat message
  */
 export const Message = ({
-  model: { message, sentTime, sender, direction, position },
+  model: {
+    message,
+    sentTime,
+    sender,
+    direction,
+    position,
+    type: modelType,
+    payload: modelPayload,
+  },
   avatarSpacer,
   avatarPosition,
+  type,
+  payload: argPayload,
   children,
   className,
   ...rest
 }) => {
   const cName = `${prefix}-message`;
-  const createMarkup = () => ({ __html: message });
 
-  const [avatar, header, footer] = getChildren(children, [
+  const [
+    avatar,
+    header,
+    footer,
+    htmlContent,
+    textContent,
+    imageContent,
+    customContent,
+  ] = getChildren(children, [
     Avatar,
     MessageHeader,
     MessageFooter,
+    MessageHtmlContent,
+    MessageTextContent,
+    MessageImageContent,
+    MessageCustomContent,
   ]);
 
   const directionClass = (() => {
@@ -98,6 +123,34 @@ export const Message = ({
     }
   })();
 
+  const childContent =
+    htmlContent ?? textContent ?? imageContent ?? customContent;
+
+  const messageContent =
+    childContent ??
+    (() => {
+      const messageType = modelType ?? type;
+
+      const payloadFromModel = modelPayload ?? message;
+      const payload = payloadFromModel ?? argPayload;
+
+      const payloadName =
+        typeof payload === "object" ? getComponentName(payload) : "";
+
+      if (messageType === "html" && payloadName !== "Message.CustomContent") {
+        return <MessageHtmlContent html={payload} />;
+      } else if (messageType === "text") {
+        return <MessageTextContent text={payload} />;
+      } else if (messageType === "image") {
+        return <MessageImageContent {...payload} />;
+      } else if (
+        messageType === "custom" ||
+        payloadName === "Message.CustomContent"
+      ) {
+        return payload;
+      }
+    })();
+
   return (
     <section
       {...rest}
@@ -117,10 +170,7 @@ export const Message = ({
       )}
       <div className={`${cName}__content-wrapper`}>
         {header}
-        <div
-          className={`${cName}__content`}
-          dangerouslySetInnerHTML={createMarkup()}
-        ></div>
+        <div className={`${cName}__content`}>{messageContent}</div>
         {footer}
       </div>
     </section>
@@ -130,11 +180,12 @@ export const Message = ({
 Message.propTypes = {
   /**
    * Model object
-   * **message:** string - Message to send
+   * **message**: string - Message to send
    * **sentTime**: string - Message sent time
    * **sender**: string - Sender name
    * **direction**: "incoming" | "outgoing" | 0 | 1 - Message direction
    * **position**: "single" | "first" | "normal" | "last" | 0 | 1 | 2 | 3 - Message position in feed
+   * **type**: "html" | "text" | "image" | "custom"
    */
   model: PropTypes.shape({
     /** Chat message to display - content. */
@@ -153,6 +204,29 @@ Message.propTypes = {
       1,
       2,
       3,
+    ]),
+
+    /**
+     * Message type
+     * This property can also be added directly to component, but property from model has precedence.
+     * Each type can have payload defined in model.payload or in payload property.
+     * Allowed payloads for different message are described in payload property.
+     */
+    type: PropTypes.oneOf(["html", "text", "image", "custom"]),
+
+    /**
+     * Message payload.
+     * Must be adequate to message type.
+     * Allowed payloads for different message types:
+     * html: String - Html string to render,
+     * text: String - Text to render,
+     * image: Object - for object properties please see **&lt;Message.ImageContent /&gt** properties,
+     * custom: **Message.CustomContent** - Component
+     */
+    payload: PropTypes.oneOfType([
+      PropTypes.string,
+      PropTypes.object,
+      allowedChildren([MessageCustomContent]),
     ]),
   }),
   avatarSpacer: PropTypes.bool,
@@ -173,19 +247,50 @@ Message.propTypes = {
 
   /**
    * Primary content.
+   * Content from payload has precedence over Message.*Content properties.
+   * Whe
    * Allowed components:
    *
    * * &lt;Avatar /&gt;
    * * &lt;Message.Header /&gt;
    * * &lt;Message.Footer /&gt;
+   * * &lt;Message.HtmlContent /&gt;
+   * * &lt;Message.TextContent /&gt;
+   * * &lt;Message.ImageContent /&gt;
+   * * &lt;Message.CustomContent /&gt;
    */
-  children: allowedChildren(
-    [Avatar, MessageHeader, MessageFooter],
-    "Allowed types: Message.Header, Message.Footer"
-  ),
+  children: allowedChildren([
+    Avatar,
+    MessageHeader,
+    MessageFooter,
+    MessageHtmlContent,
+    MessageTextContent,
+    MessageImageContent,
+    MessageCustomContent,
+  ]),
 
   /** Additional classes. */
   className: PropTypes.string,
+
+  /**
+   * Message type
+   * This property can also exists in model. In that case value from model has precedence.
+   **/
+  type: PropTypes.oneOf(["html", "text", "image", "custom"]),
+
+  /**
+   * Message payload.
+   * Must be adequate to message type.
+   * Allowed payloads for different message types:
+   * html: String - Html string to render,
+   * text: String - Text to render,
+   * image: Object - for object properties please see **&lt;Message.ImageContent &gt/>** properties,
+   * custom: **Message.CustomContent** - Component
+   */
+  payload: PropTypes.oneOfType([
+    PropTypes.string,
+    allowedChildren([MessageCustomContent]),
+  ]),
 };
 
 Message.defaultProps = {
@@ -197,9 +302,14 @@ Message.defaultProps = {
   },
   avatarSpacer: false,
   avatarPosition: undefined,
+  type: "html",
 };
 
 Message.Header = MessageHeader;
+Message.HtmlContent = MessageHtmlContent;
+Message.TextContent = MessageTextContent;
+Message.ImageContent = MessageImageContent;
+Message.CustomContent = MessageCustomContent;
 Message.Footer = MessageFooter;
 
 export default Message;
