@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.1.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.0.3...v1.1.0) (2020-12-20)
+
+
+### Features
+
+* added new message content types ([32439f7](https://github.com/chatscope/chat-ui-kit-react/commit/32439f703361ac951522f8892a01982b8e16ccf8))
+
 ## [1.0.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.0.2...v1.0.3) (2020-11-10)
 
 
