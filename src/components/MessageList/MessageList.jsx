@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef, useImperativeHandle, useRef } from "react";
 import PropTypes from "prop-types";
 import classNames from "classnames";
 import { allowedChildren, getChildren } from "../utils";
@@ -48,7 +48,7 @@ class MessageListInner extends React.Component {
   handleResize = () => {
     // If container is smaller than before resize - scroll to End
     if (this.containerRef.current.clientHeight < this.lastClientHeight) {
-      this.scrollToEnd();
+      this.scrollToEnd(this.props.scrollBehavior);
     }
 
     this.scrollRef.current.updateScroll();
@@ -108,7 +108,7 @@ class MessageListInner extends React.Component {
 
   componentDidMount() {
     // Set scrollbar to bottom on start (getSnaphotBeforeUpdate is not invoked on mount)
-    this.scrollToEnd();
+    this.scrollToEnd(this.props.scrollBehavior);
 
     this.lastClientHeight = this.containerRef.current.clientHeight;
 
@@ -132,7 +132,7 @@ class MessageListInner extends React.Component {
       }
 
       if (snapshot.sticky === true) {
-        this.scrollToEnd();
+        this.scrollToEnd(this.props.scrollBehavior);
         this.preventScrollTop = true;
       } else {
         if (snapshot.clientHeight < this.lastClientHeight) {
@@ -144,7 +144,7 @@ class MessageListInner extends React.Component {
             list.scrollHeight + 1 === sHeight ||
             list.scrollHeight - 1 === sHeight
           ) {
-            this.scrollToEnd();
+            this.scrollToEnd(this.props.scrollBehavior);
             this.preventScrollTop = true;
           } else {
             this.preventScrollTop = false;
@@ -176,7 +176,7 @@ class MessageListInner extends React.Component {
     this.containerRef.current.removeEventListener("scroll", this.handleScroll);
   }
 
-  scrollToEnd() {
+  scrollToEnd(scrollBehavior = this.props.scrollBehavior) {
     const list = this.containerRef.current;
     const scrollPoint = this.scrollPointRef.current;
 
@@ -188,7 +188,7 @@ class MessageListInner extends React.Component {
     const scrollOffset = childRect.top + list.scrollTop - parentRect.top;
 
     if (list.scrollBy) {
-      list.scrollBy({ top: scrollOffset });
+      list.scrollBy({ top: scrollOffset, behavior: scrollBehavior });
     } else {
       list.scrollTop = scrollOffset;
     }
@@ -214,6 +214,7 @@ class MessageListInner extends React.Component {
         loadingMore,
         onYReachStart,
         className,
+        scrollBehavior, // Just to remove rest
         ...rest
       },
     } = this;
@@ -265,7 +266,21 @@ class MessageListInner extends React.Component {
 
 MessageListInner.displayName = "MessageList";
 
-const MessageList = (props) => <MessageListInner {...props} />;
+function MessageListFunc(props, ref) {
+  const msgListRef = useRef();
+
+  const scrollToBottom = (scrollBehavior) =>
+    msgListRef.current.scrollToEnd(scrollBehavior);
+
+  // Return object with public Api
+  useImperativeHandle(ref, () => ({
+    scrollToBottom,
+  }));
+
+  return <MessageListInner ref={msgListRef} {...props} />;
+}
+
+const MessageList = forwardRef(MessageListFunc);
 
 MessageList.propTypes = {
   /**
@@ -298,6 +313,12 @@ MessageList.propTypes = {
    */
   onYReachStart: PropTypes.func,
 
+  /**
+   * Scroll behavior
+   * https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior
+   */
+  scrollBehavior: PropTypes.oneOf(["auto", "smooth"]),
+
   /** Additional classes. */
   className: PropTypes.string,
 };
@@ -306,6 +327,7 @@ MessageList.defaultProps = {
   typingIndicator: undefined,
   loading: false,
   loadingMore: false,
+  scrollBehavior: "auto",
 };
 
 MessageListInner.propTypes = MessageList.propTypes;
