@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.2.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.1.0...v1.2.0) (2021-01-04)
+
+
+### Features
+
+* **#6:** api method for scrolling to bottom in message input ([3d0997a](https://github.com/chatscope/chat-ui-kit-react/commit/3d0997ac737d7943f638a3e9b396107cee37423e)), closes [#6](https://github.com/chatscope/chat-ui-kit-react/issues/6)
+
 # [1.1.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.0.3...v1.1.0) (2020-12-20)
 
 
