@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.2.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.0...v1.2.1) (2021-01-17)
+
+
+### Bug Fixes
+
+* **messagelist:** resizeobserver has been disabled in browsers that do not support it ([a75859a](https://github.com/chatscope/chat-ui-kit-react/commit/a75859a5e0be9f8da3d8bd59692e027f993b26b4))
+
 # [1.2.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.1.0...v1.2.0) (2021-01-04)
 
 
