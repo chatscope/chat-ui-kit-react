@@ -114,8 +114,10 @@ class MessageListInner extends React.Component {
 
     window.addEventListener("resize", this.handleResize);
 
-    this.resizeObserver = new ResizeObserver(this.handleContainerResize);
-    this.resizeObserver.observe(this.containerRef.current);
+    if (typeof window.ResizeObserver === "function") {
+      this.resizeObserver = new ResizeObserver(this.handleContainerResize);
+      this.resizeObserver.observe(this.containerRef.current);
+    }
     this.containerRef.current.addEventListener("scroll", this.handleScroll);
   }
 
@@ -172,7 +174,9 @@ class MessageListInner extends React.Component {
 
   componentWillUnmount() {
     window.removeEventListener("resize", this.handleResize);
-    this.resizeObserver.disconnect();
+    if (typeof this.resizeObserver !== "undefined") {
+      this.resizeObserver.disconnect();
+    }
     this.containerRef.current.removeEventListener("scroll", this.handleScroll);
   }
 
