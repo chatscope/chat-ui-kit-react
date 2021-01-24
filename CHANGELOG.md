@@ -1,5 +1,13 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.2.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.1...v1.2.2) (2021-01-24)
+
+
+### Bug Fixes
+
+* **utils:** handling as attribute for forwarded ref ([73b95ab](https://github.com/chatscope/chat-ui-kit-react/commit/73b95ab7db74d5488e69507553b27916fda814fc))
+* **utils:** is attribute changed to as ([8eca5d4](https://github.com/chatscope/chat-ui-kit-react/commit/8eca5d4b58bdfea689fcc15bb5ea81101fca7f88))
+
 ## [1.2.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.0...v1.2.1) (2021-01-17)
 
 
