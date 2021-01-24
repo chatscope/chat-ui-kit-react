@@ -27,8 +27,7 @@ export const getChildren = (children, types) => {
     if (idx !== -1) {
       ret[idx] = item;
     } else {
-      const is = item?.props?.is;
-
+      const is = item?.props?.as ?? item?.props?.is;
       if (typeof is === "function") {
         const fIdx = types.indexOf(is);
         if (fIdx !== -1) {
