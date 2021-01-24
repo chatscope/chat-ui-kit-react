@@ -28,12 +28,22 @@ export const getChildren = (children, types) => {
       ret[idx] = item;
     } else {
       const is = item?.props?.as ?? item?.props?.is;
-      if (typeof is === "function") {
+      const typeofIs = typeof is;
+      if (typeofIs === "function") {
+        // Type
         const fIdx = types.indexOf(is);
         if (fIdx !== -1) {
-          ret[fIdx] = item;
+          ret[fIdx] = React.cloneElement(item, { ...item.props, as: null }); // Cloning to remove "as" attribute, which is not desirable
         }
-      } else if (typeof is === "string") {
+      } else if (typeofIs === "object") {
+        // forward ref
+
+        const typeName = is.name || is.displayName;
+        const tIdx = strTypes.indexOf(typeName);
+        if (tIdx !== -1) {
+          ret[tIdx] = React.cloneElement(item, { ...item.props, as: null }); // Cloning to remove "as" attribute, which is not desirable
+        }
+      } else if (typeofIs === "string") {
         const sIdx = strTypes.indexOf(is);
         if (sIdx !== -1) {
           ret[sIdx] = item;
@@ -46,13 +56,23 @@ export const getChildren = (children, types) => {
 };
 
 export const getComponentName = (component) => {
-  if ("type" in component) {
-    if ("displayName" in component.type) {
-      return component.type.displayName;
-    }
+  if (typeof component === "string") {
+    return component;
+  }
 
-    if ("name" in component.type) {
-      return component.type.name;
+  if ("type" in component) {
+    const componentType = typeof component.type;
+
+    if (componentType === "function" || componentType === "object") {
+      if ("displayName" in component.type) {
+        return component.type.displayName;
+      }
+
+      if ("name" in component.type) {
+        return component.type.name;
+      }
+    } else if (componentType === "string") {
+      return component.type;
     }
 
     return "undefined";
@@ -64,6 +84,7 @@ export const getComponentName = (component) => {
 /**
  * PropTypes validator.
  * Checks if all children is allowed by its types.
+ * Empty string nodes are always allowed for convenience.
  * Returns function for propTypes
  * @param {Array} allowedTypes
  * @return {Function}
@@ -82,12 +103,24 @@ export const allowedChildren = (allowedTypes) => (
   // But we don't check fd function is passed as children and its intentional
   // Passing function as children has no effect in chat-ui-kit
   const forbidden = React.Children.toArray(props[propName]).find((item) => {
-    if (allowedTypes.indexOf(item.type) === -1) {
-      const is = item?.props?.is;
+    if (typeof item === "string" && item.trim().length === 0) {
+      // Ignore string
+      return false;
+    }
 
-      if (typeof is === "function") {
+    if (allowedTypes.indexOf(item.type) === -1) {
+      const is = item?.props?.as || item?.props?.is;
+
+      const typeofIs = typeof is;
+
+      if (typeofIs === "function") {
+        // Type
         return allowedTypes.indexOf(is) === -1;
-      } else if (typeof is === "string") {
+      } else if (typeofIs === "object") {
+        // Forward ref
+        const typeName = is.name || is.displayName;
+        return allowedTypesAsStrings.indexOf(typeName) === -1;
+      } else if (typeofIs === "string") {
         return allowedTypesAsStrings.indexOf(is) === -1;
       } else {
         return true;
