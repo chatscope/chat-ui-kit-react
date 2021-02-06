@@ -125,12 +125,19 @@ class MessageListInner extends React.Component {
     if (typeof snapshot !== "undefined") {
       const list = this.containerRef.current;
 
-      const last = this.getLastMessageOrGroup();
-      if (last === snapshot.lastMessageOrGroup) {
-        list.scrollTop =
-          list.scrollHeight -
-          snapshot.diff +
-          (this.lastClientHeight - list.clientHeight);
+      const { lastElement, lastMessageInGroup } = this.getLastMessageOrGroup();
+
+      if (lastElement === snapshot.lastMessageOrGroup.lastElement) {
+        // If lastMessageInGroup is defined last element is MessageGroup otherwise its Message
+        if (
+          typeof lastMessageInGroup === "undefined" ||
+          lastMessageInGroup === snapshot.lastMessageOrGroup.lastMessageInGroup
+        ) {
+          list.scrollTop =
+            list.scrollHeight -
+            snapshot.diff +
+            (this.lastClientHeight - list.clientHeight);
+        }
       }
 
       if (snapshot.sticky === true) {
@@ -153,16 +160,21 @@ class MessageListInner extends React.Component {
           }
         } else {
           this.preventScrollTop = false;
-          const last = this.getLastMessageOrGroup();
 
-          if (last === snapshot.lastMessageOrGroup) {
-            // New elements were not added at end
-            // New elements were added at start
+          if (lastElement === snapshot.lastMessageOrGroup.lastElement) {
             if (
-              list.scrollTop === 0 &&
-              list.scrollHeight > snapshot.scrollHeight
+              typeof lastMessageInGroup === "undefined" ||
+              lastMessageInGroup ===
+                snapshot.lastMessageOrGroup.lastMessageInGroup
             ) {
-              list.scrollTop = list.scrollHeight - snapshot.scrollHeight;
+              // New elements were not added at end
+              // New elements were added at start
+              if (
+                list.scrollTop === 0 &&
+                list.scrollHeight > snapshot.scrollHeight
+              ) {
+                list.scrollTop = list.scrollHeight - snapshot.scrollHeight;
+              }
             }
           }
         }
@@ -204,10 +216,20 @@ class MessageListInner extends React.Component {
     this.noScroll = true;
   }
 
-  getLastMessageOrGroup = () =>
-    this.containerRef.current.querySelector(
+  getLastMessageOrGroup = () => {
+    const lastElement = this.containerRef.current.querySelector(
       `[data-${prefix}-message-list]>[data-${prefix}-message]:last-of-type,[data-${prefix}-message-list]>[data-${prefix}-message-group]:last-of-type`
     );
+
+    const lastMessageInGroup = lastElement?.querySelector(
+      `[data-${prefix}-message]:last-of-type`
+    );
+
+    return {
+      lastElement,
+      lastMessageInGroup,
+    };
+  };
 
   render() {
     const {
