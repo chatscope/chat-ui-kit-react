@@ -74,7 +74,7 @@
     "watch": "chokidar 'src/**/*.*' -c 'yarn run build:esm'"
   },
   "dependencies": {
-    "@chatscope/chat-ui-kit-styles": "^1.0.2",
+    "@chatscope/chat-ui-kit-styles": "^1.1.0",
     "@fortawesome/fontawesome-free": "^5.12.1",
     "@fortawesome/fontawesome-svg-core": "^1.2.26",
     "@fortawesome/free-solid-svg-icons": "^5.12.0",

@@ -12,6 +12,8 @@ export const ConversationList = ({
   children,
   scrollable,
   loading,
+  loadingMore,
+  onYReachEnd,
   className,
   ...props
 }) => {
@@ -19,12 +21,12 @@ export const ConversationList = ({
 
   // Memoize, to avoid re-render each time when props (children) changed
   const Tag = useMemo(
-    () => ({ children, className, ...rest }) => {
+    () => ({ children }) => {
       // PerfectScrollbar for now cant be disabled, so render div instead of disabling it
       // https://github.com/goldenyz/react-perfect-scrollbar/issues/107
       if (scrollable === false || (scrollable === true && loading === true)) {
         return (
-          <div className={className} {...rest}>
+          <div>
             {loading && (
               <Overlay>
                 <Loader />
@@ -36,8 +38,7 @@ export const ConversationList = ({
       } else {
         return (
           <PerfectScrollbar
-            className={className}
-            {...rest}
+            onYReachEnd={onYReachEnd}
             options={{ suppressScrollX: true }}
           >
             {children}
@@ -49,15 +50,22 @@ export const ConversationList = ({
   );
 
   return (
-    <Tag className={classNames(cName, className)} {...props}>
-      {React.Children.count(children) > 0 && (
-        <ul>
-          {React.Children.map(children, (item) => (
-            <li>{item}</li>
-          ))}
-        </ul>
+    <div className={classNames(cName, className)} {...props}>
+      <Tag>
+        {React.Children.count(children) > 0 && (
+          <ul>
+            {React.Children.map(children, (item) => (
+              <li>{item}</li>
+            ))}
+          </ul>
+        )}
+      </Tag>
+      {loadingMore && (
+        <div className={`${cName}__loading-more`}>
+          <Loader />
+        </div>
       )}
-    </Tag>
+    </div>
   );
 };
 
@@ -77,6 +85,15 @@ ConversationList.propTypes = {
   /** Loading flag. */
   loading: PropTypes.bool,
 
+  /** Loading more flag for infinity scroll. */
+  loadingMore: PropTypes.bool,
+
+  /**
+   * This is fired when the scrollbar reaches the end on the y axis.<br/>
+   * It can be used to load next conversations using the infinite scroll.
+   */
+  onYReachEnd: PropTypes.func,
+
   /** Additional classes. */
   className: PropTypes.string,
 };
@@ -85,6 +102,7 @@ ConversationList.defaultProps = {
   children: [],
   scrollable: true,
   loading: false,
+  loadingMore: false,
   className: "",
 };
 

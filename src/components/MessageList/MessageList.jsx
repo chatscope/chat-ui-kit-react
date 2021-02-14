@@ -330,12 +330,12 @@ MessageList.propTypes = {
   /** Loading flag. */
   loading: PropTypes.bool,
 
-  /** Loading more flag gor infinity scroll. */
+  /** Loading more flag for infinity scroll. */
   loadingMore: PropTypes.bool,
 
   /**
-   * It is fired when the scrollbar reaches the beginning on the x axis.<br/>
-   * This can be used to load previous messages using the infinite scroll.
+   * This is fired when the scrollbar reaches the beginning on the x axis.<br/>
+   * It can be used to load previous messages using the infinite scroll.
    */
   onYReachStart: PropTypes.func,
 
