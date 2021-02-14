@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.2.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.2...v1.2.3) (2021-02-06)
+
+
+### Bug Fixes
+
+* **message-list:** scroll handling for grouped messages ([2c8c9be](https://github.com/chatscope/chat-ui-kit-react/commit/2c8c9becfa9b04c75b70ca0e967632fe798f0247))
+
 ## [1.2.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.1...v1.2.2) (2021-01-24)
 
 
