@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.3.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.3...v1.3.0) (2021-02-14)
+
+
+### Features
+
+* **conversation-list:** loading more in conversation list ([e106ccb](https://github.com/chatscope/chat-ui-kit-react/commit/e106ccbef7727317ef02017a26c860784aa40cde))
+
 ## [1.2.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.2...v1.2.3) (2021-02-06)
 
 
