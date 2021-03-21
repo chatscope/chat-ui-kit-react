@@ -122,6 +122,10 @@ class MessageListInner extends React.Component {
   }
 
   componentDidUpdate(prevProps, prevState, snapshot) {
+    const {
+      props: { autoScrollToBottom },
+    } = this;
+
     if (typeof snapshot !== "undefined") {
       const list = this.containerRef.current;
 
@@ -141,7 +145,9 @@ class MessageListInner extends React.Component {
       }
 
       if (snapshot.sticky === true) {
-        this.scrollToEnd(this.props.scrollBehavior);
+        if (autoScrollToBottom === true) {
+          this.scrollToEnd(this.props.scrollBehavior);
+        }
         this.preventScrollTop = true;
       } else {
         if (snapshot.clientHeight < this.lastClientHeight) {
@@ -153,8 +159,10 @@ class MessageListInner extends React.Component {
             list.scrollHeight + 1 === sHeight ||
             list.scrollHeight - 1 === sHeight
           ) {
-            this.scrollToEnd(this.props.scrollBehavior);
-            this.preventScrollTop = true;
+            if (autoScrollToBottom === true) {
+              this.scrollToEnd(this.props.scrollBehavior);
+              this.preventScrollTop = true;
+            }
           } else {
             this.preventScrollTop = false;
           }
@@ -238,9 +246,12 @@ class MessageListInner extends React.Component {
         typingIndicator,
         loading,
         loadingMore,
+        loadingMorePosition,
         onYReachStart,
+        onYReachEnd,
         className,
         scrollBehavior, // Just to remove rest
+        autoScrollToBottom, // Just to remove rest
         ...rest
       },
     } = this;
@@ -252,7 +263,12 @@ class MessageListInner extends React.Component {
     return (
       <div {...rest} className={classNames(cName, className)}>
         {loadingMore && (
-          <div className={`${cName}__loading-more`}>
+          <div
+            className={classNames(`${cName}__loading-more`, {
+              [`${cName}__loading-more--bottom`]:
+                loadingMorePosition === "bottom",
+            })}
+          >
             <Loader />
           </div>
         )}
@@ -263,6 +279,7 @@ class MessageListInner extends React.Component {
         )}
         <PerfectScrollbar
           onYReachStart={onYReachStart}
+          onYReachEnd={onYReachEnd}
           className={`${cName}__scroll-wrapper`}
           ref={this.scrollRef}
           containerRef={(ref) => (this.containerRef.current = ref)}
@@ -316,6 +333,7 @@ MessageList.propTypes = {
    * * &lt;Message /&gt;
    * * &lt;MessageGroup /&gt;
    * * &lt;MessageSeparator /&gt;
+   * * &lt;MessageListContent /&gt;
    */
   children: allowedChildren([
     Message,
@@ -333,11 +351,25 @@ MessageList.propTypes = {
   /** Loading more flag for infinity scroll. */
   loadingMore: PropTypes.bool,
 
+  /** Loading more loader position. */
+  loadingMorePosition: PropTypes.oneOf(["top", "bottom"]),
+
   /**
-   * This is fired when the scrollbar reaches the beginning on the x axis.<br/>
+   * This is fired when the scrollbar reaches the beginning on the y axis.<br/>
    * It can be used to load previous messages using the infinite scroll.
    */
   onYReachStart: PropTypes.func,
+
+  /**
+   * This is fired when the scrollbar reaches the end on the y axis.<br/>
+   * It can be used to load next messages using the infinite scroll.
+   */
+  onYReachEnd: PropTypes.func,
+
+  /**
+   * Auto scroll to bottom
+   */
+  autoScrollToBottom: PropTypes.bool,
 
   /**
    * Scroll behavior
@@ -353,6 +385,8 @@ MessageList.defaultProps = {
   typingIndicator: undefined,
   loading: false,
   loadingMore: false,
+  loadingMorePosition: "top",
+  autoScrollToBottom: true,
   scrollBehavior: "auto",
 };
 
