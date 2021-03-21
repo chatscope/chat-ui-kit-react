@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.4.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.3.0...v1.4.0) (2021-03-21)
+
+
+### Features
+
+* **message-list:** loading more loader at the bottom ([e540cbc](https://github.com/chatscope/chat-ui-kit-react/commit/e540cbc9c6db25657207669fe8cd89b8036da064))
+
 # [1.3.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.2.3...v1.3.0) (2021-02-14)
 
 
