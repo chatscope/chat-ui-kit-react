@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.5.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.4.0...v1.5.0) (2021-03-24)
+
+
+### Features
+
+* **message list:** added autoScrollToBottomOnMount property ([6ba92a8](https://github.com/chatscope/chat-ui-kit-react/commit/6ba92a85db8c15d56ac2a51c149d87886ab78beb))
+
 # [1.4.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.3.0...v1.4.0) (2021-03-21)
 
 
