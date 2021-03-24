@@ -108,7 +108,9 @@ class MessageListInner extends React.Component {
 
   componentDidMount() {
     // Set scrollbar to bottom on start (getSnaphotBeforeUpdate is not invoked on mount)
-    this.scrollToEnd(this.props.scrollBehavior);
+    if (this.props.autoScrollToBottomOnMount === true) {
+      this.scrollToEnd(this.props.scrollBehavior);
+    }
 
     this.lastClientHeight = this.containerRef.current.clientHeight;
 
@@ -252,6 +254,7 @@ class MessageListInner extends React.Component {
         className,
         scrollBehavior, // Just to remove rest
         autoScrollToBottom, // Just to remove rest
+        autoScrollToBottomOnMount, // Just to remove rest
         ...rest
       },
     } = this;
@@ -372,6 +375,11 @@ MessageList.propTypes = {
   autoScrollToBottom: PropTypes.bool,
 
   /**
+   * Auto scroll to bottom on mount
+   */
+  autoScrollToBottomOnMount: PropTypes.bool,
+
+  /**
    * Scroll behavior
    * https://developer.mozilla.org/en-US/docs/Web/API/ScrollToOptions/behavior
    */
@@ -387,6 +395,7 @@ MessageList.defaultProps = {
   loadingMore: false,
   loadingMorePosition: "top",
   autoScrollToBottom: true,
+  autoScrollToBottomOnMount: true,
   scrollBehavior: "auto",
 };
 
