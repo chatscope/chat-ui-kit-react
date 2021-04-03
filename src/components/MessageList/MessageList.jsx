@@ -59,23 +59,25 @@ class MessageListInner extends React.Component {
       window.requestAnimationFrame(() => {
         const list = this.containerRef.current;
 
-        const currentHeight = list.clientHeight;
+        if (list) {
+          const currentHeight = list.clientHeight;
 
-        const diff = currentHeight - this.lastClientHeight;
+          const diff = currentHeight - this.lastClientHeight;
 
-        if (diff >= 1) {
-          // Because fractional
+          if (diff >= 1) {
+            // Because fractional
 
-          if (this.preventScrollTop === false) {
-            list.scrollTop = Math.round(list.scrollTop) - diff;
+            if (this.preventScrollTop === false) {
+              list.scrollTop = Math.round(list.scrollTop) - diff;
+            }
+          } else {
+            list.scrollTop = list.scrollTop - diff;
           }
-        } else {
-          list.scrollTop = list.scrollTop - diff;
+
+          this.lastClientHeight = list.clientHeight;
+
+          this.scrollRef.current.updateScroll();
         }
-
-        this.lastClientHeight = list.clientHeight;
-
-        this.scrollRef.current.updateScroll();
 
         this.resizeTicking = false;
       });
