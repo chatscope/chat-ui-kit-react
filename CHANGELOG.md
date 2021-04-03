@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.5.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.5.0...v1.5.1) (2021-04-03)
+
+
+### Bug Fixes
+
+* **message list:** cannot read property 'clientHeight' of null ([705ede2](https://github.com/chatscope/chat-ui-kit-react/commit/705ede25c395ed3e5bc236463af7945d2394d7d5))
+
 # [1.5.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.4.0...v1.5.0) (2021-03-24)
 
 
