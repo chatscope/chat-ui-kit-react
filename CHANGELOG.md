@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.5.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.5.1...v1.5.2) (2021-04-12)
+
+
+### Bug Fixes
+
+* **messageinput, commenteditable:** fix bug that last korean character is entered twice ([2986e2b](https://github.com/chatscope/chat-ui-kit-react/commit/2986e2bb5375eafbd5a7f96e2c5341eaedeca248))
+
 ## [1.5.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.5.0...v1.5.1) (2021-04-03)
 
 
