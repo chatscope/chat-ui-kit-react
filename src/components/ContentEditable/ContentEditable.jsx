@@ -43,11 +43,11 @@ export class ContentEditable extends Component {
     };
   };
 
-  handleKeyDown = (evt) => {
+  handleKeyPress = (evt) => {
     const {
-      props: { onKeyDown },
+      props: { onKeyPress },
     } = this;
-    onKeyDown(evt);
+    onKeyPress(evt);
   };
 
   handleInput = (evt) => {
@@ -111,7 +111,7 @@ export class ContentEditable extends Component {
     const {
         msgRef,
         handleInput,
-        handleKeyDown,
+        handleKeyPress,
         innerHTML,
         props: { placeholder, disabled, className },
       } = this,
@@ -125,7 +125,7 @@ export class ContentEditable extends Component {
         disabled={disabled}
         data-placeholder={ph}
         onInput={handleInput}
-        onKeyDown={handleKeyDown}
+        onKeyPress={handleKeyPress}
         dangerouslySetInnerHTML={innerHTML()}
       ></div>
     );
@@ -158,10 +158,10 @@ ContentEditable.propTypes = {
   onChange: PropTypes.func,
 
   /**
-   * onKeyDown handler<br>
+   * onKeyPress handler<br>
    * @param {String} value
    */
-  onKeyDown: PropTypes.func,
+  onKeyPress: PropTypes.func,
 
   /** Additional classes. */
   className: PropTypes.string,
@@ -174,7 +174,7 @@ ContentEditable.defaultProps = {
   activateAfterChange: false,
   autoFocus: false,
   onChange: () => {},
-  onKeyDown: () => {},
+  onKeyPress: () => {},
 };
 
 export default ContentEditable;
