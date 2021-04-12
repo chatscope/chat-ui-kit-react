@@ -135,7 +135,7 @@ function MessageInputInner(
     }
   };
 
-  const handleKeyDown = (evt) => {
+  const handleKeyPress = (evt) => {
     if (evt.key === "Enter" && evt.shiftKey === false) {
       evt.preventDefault();
       send();
@@ -187,7 +187,7 @@ function MessageInputInner(
             className={`${cName}__content-editor`}
             disabled={disabled}
             placeholder={ph}
-            onKeyDown={handleKeyDown}
+            onKeyPress={handleKeyPress}
             onChange={handleChange}
             activateAfterChange={activateAfterChange}
             value={stateValue}
