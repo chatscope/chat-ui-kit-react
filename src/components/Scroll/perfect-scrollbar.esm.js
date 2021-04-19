@@ -218,7 +218,8 @@ function processScrollDiff(
   axis,
   diff,
   useScrollingClass,
-  forceFireReachEvent
+  forceFireReachEvent,
+  disableOnYReachWhenNoScroll
 ) {
   if (useScrollingClass === void 0) useScrollingClass = true;
   if (forceFireReachEvent === void 0) forceFireReachEvent = false;
@@ -246,7 +247,14 @@ function processScrollDiff(
     throw new Error("A proper axis should be provided");
   }
 
-  processScrollDiff$1(i, diff, fields, useScrollingClass, forceFireReachEvent);
+  processScrollDiff$1(
+    i,
+    diff,
+    fields,
+    useScrollingClass,
+    forceFireReachEvent,
+    disableOnYReachWhenNoScroll
+  );
 }
 
 function processScrollDiff$1(
@@ -254,7 +262,8 @@ function processScrollDiff$1(
   diff,
   ref,
   useScrollingClass,
-  forceFireReachEvent
+  forceFireReachEvent,
+  disableOnYReachWhenNoScroll
 ) {
   var contentHeight = ref[0];
   var containerHeight = ref[1];
@@ -270,13 +279,21 @@ function processScrollDiff$1(
   // reset reach
   i.reach[y] = null;
 
+  const eventFlag =
+    disableOnYReachWhenNoScroll === true
+      ? i[contentHeight] !== i[containerHeight]
+      : true;
+
   // 1 for subpixel rounding
-  if (element[scrollTop] < 1) {
+  if (eventFlag && element[scrollTop] < 1) {
     i.reach[y] = "start";
   }
 
   // 1 for subpixel rounding
-  if (element[scrollTop] > i[contentHeight] - i[containerHeight] - 1) {
+  if (
+    eventFlag &&
+    element[scrollTop] > i[contentHeight] - i[containerHeight] - 1
+  ) {
     i.reach[y] = "end";
   }
 
@@ -1314,7 +1331,9 @@ var PerfectScrollbar = function PerfectScrollbar(element, userSettings) {
   updateGeometry(this);
 };
 
-PerfectScrollbar.prototype.update = function update() {
+PerfectScrollbar.prototype.update = function update(
+  disableOnYReachWhenNoScroll
+) {
   if (!this.isAlive) {
     return;
   }
@@ -1340,8 +1359,8 @@ PerfectScrollbar.prototype.update = function update() {
 
   updateGeometry(this);
 
-  processScrollDiff(this, "top", 0, false, true);
-  processScrollDiff(this, "left", 0, false, true);
+  processScrollDiff(this, "top", 0, false, true, disableOnYReachWhenNoScroll);
+  processScrollDiff(this, "left", 0, false, true, disableOnYReachWhenNoScroll);
 
   set(this.scrollbarXRail, { display: "" });
   set(this.scrollbarYRail, { display: "" });

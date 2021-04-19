@@ -254,6 +254,7 @@ class MessageListInner extends React.Component {
         onYReachStart,
         onYReachEnd,
         className,
+        disableOnYReachWhenNoScroll,
         scrollBehavior, // Just to remove rest
         autoScrollToBottom, // Just to remove rest
         autoScrollToBottomOnMount, // Just to remove rest
@@ -285,6 +286,7 @@ class MessageListInner extends React.Component {
         <PerfectScrollbar
           onYReachStart={onYReachStart}
           onYReachEnd={onYReachEnd}
+          onSync={(ps) => ps.update(disableOnYReachWhenNoScroll)}
           className={`${cName}__scroll-wrapper`}
           ref={this.scrollRef}
           containerRef={(ref) => (this.containerRef.current = ref)}
@@ -372,6 +374,13 @@ MessageList.propTypes = {
   onYReachEnd: PropTypes.func,
 
   /**
+   * Disables onYReachStart and onYReachEnd events from being fired<br />
+   * when the list is not scrollable.
+   * This is set to false by default for backward compatibility.
+   */
+  disableOnYReachWhenNoScroll: PropTypes.func,
+
+  /**
    * Auto scroll to bottom
    */
   autoScrollToBottom: PropTypes.bool,
@@ -396,6 +405,7 @@ MessageList.defaultProps = {
   loading: false,
   loadingMore: false,
   loadingMorePosition: "top",
+  disableOnYReachWhenNoScroll: false,
   autoScrollToBottom: true,
   autoScrollToBottomOnMount: true,
   scrollBehavior: "auto",
