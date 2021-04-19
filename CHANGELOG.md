@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.6.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.5.2...v1.6.0) (2021-04-19)
+
+
+### Features
+
+* **message-list:** added disableOnYReachWhenNoScroll property ([3176f2e](https://github.com/chatscope/chat-ui-kit-react/commit/3176f2ec276e5cfdf157dd0a2aacd5f02eb008f7))
+
 ## [1.5.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.5.1...v1.5.2) (2021-04-12)
 
 
