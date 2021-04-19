@@ -378,7 +378,7 @@ MessageList.propTypes = {
    * when the list is not scrollable.
    * This is set to false by default for backward compatibility.
    */
-  disableOnYReachWhenNoScroll: PropTypes.func,
+  disableOnYReachWhenNoScroll: PropTypes.bool,
 
   /**
    * Auto scroll to bottom
