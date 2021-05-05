@@ -119,6 +119,16 @@ function MessageInputInner(
     }
   });
 
+  const getContent = () => {
+    // Direct reference to contenteditable div
+    const contentEditableRef = msgRef.current.msgRef.current;
+    return [
+      contentEditableRef.textContent,
+      contentEditableRef.innerText,
+      contentEditableRef.cloneNode(true).childNodes,
+    ];
+  };
+
   const send = () => {
     if (stateValue.length > 0) {
       // Clear input only when it's uncontrolled mode
@@ -131,7 +141,9 @@ function MessageInputInner(
         setStateSendDisabled(true);
       }
 
-      onSend(stateValue);
+      const content = getContent();
+
+      onSend(stateValue, content[0], content[1], content[2]);
     }
   };
 
@@ -142,8 +154,8 @@ function MessageInputInner(
     }
   };
 
-  const handleChange = (val, textContent, innerText) => {
-    setStateValue(val);
+  const handleChange = (innerHTML, textContent, innerText) => {
+    setStateValue(innerHTML);
     if (typeof sendDisabled === "undefined") {
       setStateSendDisabled(textContent.length === 0);
     }
@@ -152,7 +164,9 @@ function MessageInputInner(
       scrollRef.current.updateScroll();
     }
 
-    onChange(val);
+    const content = getContent();
+
+    onChange(innerHTML, textContent, innerText, content[2]);
   };
 
   const cName = `${prefix}-message-input`,
