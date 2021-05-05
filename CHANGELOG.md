@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.7.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.6.1...v1.7.0) (2021-05-05)
+
+
+### Features
+
+* **message-input:** added arguments to onChange and onSend ([9f8b2cc](https://github.com/chatscope/chat-ui-kit-react/commit/9f8b2ccc4996a47a8784ce12842d307adcb93a95))
+
 ## [1.6.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.6.0...v1.6.1) (2021-04-19)
 
 
