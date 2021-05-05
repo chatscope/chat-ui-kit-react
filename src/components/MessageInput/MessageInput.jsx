@@ -254,13 +254,19 @@ MessageInput.propTypes = {
 
   /**
    * onChange handler<br>
-   * @param {String} value
+   * @param {String} innerHtml
+   * @param {String} textContent
+   * @param {String} innerText
+   * @param {NodeList} nodes
    */
   onChange: PropTypes.func,
 
   /**
    * onSend handler<br>
-   * @param {String} value
+   * @param {String} innerHtml
+   * @param {String} textContent
+   * @param {String} innerText
+   * @param {NodeList} nodes
    */
   onSend: PropTypes.func,
 
