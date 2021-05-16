@@ -6,7 +6,7 @@ Build your own chat UI with React components in few minutes.
 Chat UI Kit from chatscope is an open source UI toolkit for developing web chat applications.
 
 Tired of struggling with sticky scrollbars, contenteditable, responsiveness, css hacks...?  
-Our kit is for you! [See all features](https://chatscope.io/features).
+This kit is for you! [See all features](https://chatscope.io/features).
 
 **Chat UI Kit makes chat UI development at warp speed**
 
@@ -78,9 +78,14 @@ Yeah! Your first chat GUI is ready!
 
 UMD usage is documented in our [Storybook](https://chatscope.io/storybook/react/).
 
-### Documentation
+## Documentation
 
 Check our friendly [Storybook](https://chatscope.io/storybook/react/).
+
+## See also
+
+[@chatscope/use-chat](https://github.com/chatscope/use-chat) is a React hook for state management in chat applications.  
+Check it out and see how easy you can do the chat logic yourself.
 
 ## Show your support
 
