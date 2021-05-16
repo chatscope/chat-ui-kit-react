@@ -10,6 +10,13 @@ This kit is for you! [See all features](https://chatscope.io/features).
 
 **Chat UI Kit makes chat UI development at warp speed**
 
+## Demo
+
+- Zoe, Akane, Eliot and Joe: https://chatscope.io/demo/
+- Chat with the Martian (he is available sometimes): https://mars.chatscope.io/
+
+More demo apps will be available soon.
+
 ## Install
 
 **Component library**.
