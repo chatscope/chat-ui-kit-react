@@ -1,5 +1,7 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.7.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.7.0...v1.7.1) (2021-05-16)
+
 # [1.7.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.6.1...v1.7.0) (2021-05-05)
 
 
