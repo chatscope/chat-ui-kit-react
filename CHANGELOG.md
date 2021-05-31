@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.8.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.7.2...v1.8.0) (2021-05-31)
+
+
+### Features
+
+* **message-input:** prop to messageinput that prevents send on return ([98fc849](https://github.com/chatscope/chat-ui-kit-react/commit/98fc8498b10817d80b744946e0d0c4b27915e683))
+
 ## [1.7.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.7.1...v1.7.2) (2021-05-16)
 
 ## [1.7.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.7.0...v1.7.1) (2021-05-16)
