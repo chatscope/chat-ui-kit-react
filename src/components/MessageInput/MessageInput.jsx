@@ -77,6 +77,7 @@ function MessageInputInner(
     activateAfterChange,
     disabled,
     sendDisabled,
+    sendOnReturnDisabled,
     attachDisabled,
     sendButton,
     attachButton,
@@ -148,7 +149,7 @@ function MessageInputInner(
   };
 
   const handleKeyPress = (evt) => {
-    if (evt.key === "Enter" && evt.shiftKey === false) {
+    if (evt.key === "Enter" && evt.shiftKey === false && sendOnReturnDisabled === false) {
       evt.preventDefault();
       send();
     }
@@ -233,6 +234,9 @@ MessageInput.propTypes = {
   /** A input can show it is currently unable to be interacted with. */
   disabled: PropTypes.bool,
 
+  /** Prevent that the input message is sent on a return press */
+  sendOnReturnDisabled: PropTypes.bool,
+
   /** Send button can be disabled.<br>
    * It's state is tracked by component, but it can be forced */
   sendDisabled: PropTypes.bool,
@@ -294,6 +298,7 @@ MessageInput.defaultProps = {
   value: undefined,
   placeholder: "",
   disabled: false,
+  sendOnReturnDisabled: false,
   fancyScroll: true,
   activateAfterChange: false,
   autoFocus: false,
