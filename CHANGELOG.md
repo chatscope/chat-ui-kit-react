@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.8.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.0...v1.8.1) (2021-06-03)
+
+
+### Bug Fixes
+
+* **as:** custom component aliased with string is not displayed in production build ([cbf8a04](https://github.com/chatscope/chat-ui-kit-react/commit/cbf8a044c1789d4ffabc29a1fce8178585e7954e)), closes [#43](https://github.com/chatscope/chat-ui-kit-react/issues/43)
+
 # [1.8.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.7.2...v1.8.0) (2021-05-31)
 
 
