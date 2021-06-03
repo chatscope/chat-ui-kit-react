@@ -13,6 +13,8 @@ export const InputToolbox = ({ className, children, ...rest }) => {
   );
 };
 
+InputToolbox.displayName = "InputToolbox";
+
 InputToolbox.propTypes = {
   /** Primary content. */
   children: PropTypes.node,

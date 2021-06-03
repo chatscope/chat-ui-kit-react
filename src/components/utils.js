@@ -20,7 +20,7 @@ export const isChildrenNil = (children) =>
  */
 export const getChildren = (children, types) => {
   const ret = [];
-  const strTypes = types.map((t) => t.name || t.displayName);
+  const strTypes = types.map((t) => t.displayName || t.name);
 
   React.Children.toArray(children).forEach((item) => {
     const idx = types.indexOf(item.type);

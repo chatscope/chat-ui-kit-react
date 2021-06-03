@@ -50,6 +50,8 @@ export const AvatarGroup = ({
   );
 };
 
+AvatarGroup.displayName = "AvatarGroup";
+
 AvatarGroup.propTypes = {
   /**
    * Primary content.

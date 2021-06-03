@@ -33,6 +33,8 @@ export const ConversationHeader = ({ children, className, ...rest }) => {
   );
 };
 
+ConversationHeader.displayName = "ConversationHeader";
+
 ConversationHeader.propTypes = {
   /**
    * Primary content.
