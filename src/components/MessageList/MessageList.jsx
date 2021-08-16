@@ -30,11 +30,10 @@ class MessageListInner extends React.Component {
     const list = this.containerRef.current;
 
     const topHeight = Math.round(list.scrollTop + list.clientHeight);
-    // 1 px fix for firefox
+    // 10px fix for firefox
     const sticky =
-      list.scrollHeight === topHeight ||
-      list.scrollHeight + 1 === topHeight ||
-      list.scrollHeight - 1 === topHeight;
+      list.scrollHeight + 10 >= topHeight &&
+      list.scrollHeight - 10 <= topHeight;
 
     return {
       sticky,
@@ -156,12 +155,11 @@ class MessageListInner extends React.Component {
       } else {
         if (snapshot.clientHeight < this.lastClientHeight) {
           // If was sticky because scrollHeight is not changing, so here will be equal to lastHeight plus current scrollTop
-          // 1px fix id for firefox
+          // 10px fix id for firefox
           const sHeight = list.scrollTop + this.lastClientHeight;
           if (
-            list.scrollHeight === sHeight ||
-            list.scrollHeight + 1 === sHeight ||
-            list.scrollHeight - 1 === sHeight
+            list.scrollHeight + 10 >= sHeight &&
+            list.scrollHeight - 10 <= sHeight
           ) {
             if (autoScrollToBottom === true) {
               this.scrollToEnd(this.props.scrollBehavior);
