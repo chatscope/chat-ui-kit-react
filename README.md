@@ -103,6 +103,7 @@ Now if you made your awesome chat UI and you love this library, please ⭐ this 
 - Twitting via [@chatscope](https://twitter.com/chatscope)
 - Chatting at [Discord](https://discord.gg/TkUYWQRf2M)
 - Facebooking at [Facebook](https://www.facebook.com/chatscope)
+- Articles on the [chatscope blog](https://chatscope.io/blog/)
 
 ## Website
 
