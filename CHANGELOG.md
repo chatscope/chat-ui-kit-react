@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.8.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.2...v1.8.3) (2021-11-26)
+
+
+### Bug Fixes
+
+* [#55](https://github.com/chatscope/chat-ui-kit-react/issues/55) changed lastactivitytime prop type to node ([7efcfb2](https://github.com/chatscope/chat-ui-kit-react/commit/7efcfb287dc1382893853ba4d4f74d03e0934bc5))
+
 ## [1.8.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.1...v1.8.2) (2021-10-11)
 
 
