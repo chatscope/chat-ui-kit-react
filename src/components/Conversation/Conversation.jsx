@@ -109,7 +109,7 @@ Conversation.propTypes = {
   info: PropTypes.node,
 
   /** Last activity time. */
-  lastActivityTime: PropTypes.string,
+  lastActivityTime: PropTypes.node,
 
   /** Active (currently viewed) */
   active: PropTypes.bool,
