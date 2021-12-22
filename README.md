@@ -12,10 +12,11 @@ This kit is for you! [See all features](https://chatscope.io/features).
 
 ## Demo
 
-- Zoe, Akane, Eliot and Joe: https://chatscope.io/demo/
-- Chat with the Martian (he is available sometimes): https://mars.chatscope.io/
+- Full featured chat application: [https://demo.chatscope.io](https://demo.chatscope.io)
+- Zoe, Akane, Eliot and Joe: [https://chatscope.io/demo/chat-friends](https://chatscope.io/demo/chat-friends/)
+- Chat with the Martian (he is available sometimes): [https://mars.chatscope.io](https://mars.chatscope.io)
 
-More demo apps will be available soon.
+Demos index: [https://chatscope.io/demo](https://chatscope.io/demo/).
 
 ## Install
 
