@@ -97,7 +97,8 @@
     "*.{js,css,md,jsx}": "prettier --write"
   },
   "files": [
-    "dist"
+    "dist",
+    "src/**/*.d.ts"
   ],
   "publishConfig": {
     "access": "public"
