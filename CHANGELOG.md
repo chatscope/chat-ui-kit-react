@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.1...v1.9.2) (2022-06-14)
+
+
+### Bug Fixes
+
+* **typings:** renamed MessageGroup typings file ([59d374a](https://github.com/chatscope/chat-ui-kit-react/commit/59d374afc00b236ebbfe3081f02454a2f666f38e))
+
 ## [1.9.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.0...v1.9.1) (2022-06-14)
 
 
