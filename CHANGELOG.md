@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.0...v1.9.1) (2022-06-14)
+
+
+### Bug Fixes
+
+* **typings:** added missing *.d.ts files to the build ([eeaa27e](https://github.com/chatscope/chat-ui-kit-react/commit/eeaa27e586d44dd6d8cf67c3b5be781cdf7c857c))
+
 # [1.9.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.3...v1.9.0) (2022-06-14)
 
 
