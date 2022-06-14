@@ -4,7 +4,7 @@ import { allowedChildren, getChildren } from "../utils";
 import classNames from "classnames";
 import cName from "./cName";
 import ConversationOperations from "./ConversationOperations";
-import ConversationContent from "./ConversationConent";
+import ConversationContent from "./ConversationContent";
 import Avatar from "../Avatar";
 import AvatarGroup from "../AvatarGroup";
 
