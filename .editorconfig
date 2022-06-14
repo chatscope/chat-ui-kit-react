@@ -3,6 +3,6 @@ root = true
 [*]
 end_of_line = lf
 
-[*.{js,json,ts,html,jsx,mdx}]
+[*.{js,json,ts,tsx,d.ts,html,jsx,mdx}]
 indent_style = space
 indent_size = 2

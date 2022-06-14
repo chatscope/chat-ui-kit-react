@@ -26,9 +26,10 @@ export const Sidebar = ({
     }
   })();
 
+  /* eslint-disable react/display-name*/
   const Tag = useMemo(
     () => ({ children, ...rest }) => {
-      // PerfectScrollbar for now cant be disabled, so render div instead of disabling it
+      // PerfectScrollbar for now can't be disabled, so render div instead of disabling it
       // https://github.com/goldenyz/react-perfect-scrollbar/issues/107
       if (scrollable === false || (scrollable === true && loading === true)) {
         return (

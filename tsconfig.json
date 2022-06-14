@@ -1,0 +1,15 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "ES2015",
+    "sourceMap": true,
+    "declaration": false,
+    "strict": true,
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "jsx": "react",
+    "checkJs": false,
+    "allowJs": true
+  },
+  "include": ["src/**/*"]
+}

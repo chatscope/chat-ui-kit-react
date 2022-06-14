@@ -1,5 +1,6 @@
 import React from "react";
 
+/* eslint-disable  @typescript-eslint/no-empty-function */
 export const noop = () => {};
 
 /**
@@ -15,7 +16,7 @@ export const isChildrenNil = (children) =>
 /**
  * Gets only specified types children
  * @param children
- * @param Array types
+ * @param {Array} types
  * @returns {[]}
  */
 export const getChildren = (children, types) => {

@@ -149,7 +149,11 @@ function MessageInputInner(
   };
 
   const handleKeyPress = (evt) => {
-    if (evt.key === "Enter" && evt.shiftKey === false && sendOnReturnDisabled === false) {
+    if (
+      evt.key === "Enter" &&
+      evt.shiftKey === false &&
+      sendOnReturnDisabled === false
+    ) {
       evt.preventDefault();
       send();
     }
@@ -243,7 +247,7 @@ MessageInput.propTypes = {
 
   /**
    * Fancy scroll
-   * This property is set in contructor, and is not changing when component update.
+   * This property is set in constructor, and is not changing when component update.
    */
   fancyScroll: PropTypes.bool,
 
