@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.9.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.3...v1.9.0) (2022-06-14)
+
+
+### Features
+
+* typescript typings ([12295ae](https://github.com/chatscope/chat-ui-kit-react/commit/12295ae762ad7f213c68000183a77f1df8d2bae0))
+
 ## [1.8.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.8.2...v1.8.3) (2021-11-26)
 
 
