@@ -69,8 +69,7 @@ declare const Message: {
     TextContent: typeof MessageTextContent;
     ImageContent: typeof MessageImageContent;
     CustomContent: typeof MessageCustomContent;
-   Footer:typeof MessageFooter;
-        
+    Footer:typeof MessageFooter;
 };
 
 export {

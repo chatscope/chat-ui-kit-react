@@ -6,14 +6,16 @@ import type {
 /* eslint-disable @typescript-eslint/no-explicit-any */
 export type EmptyProps = Record<never, any>;
 
-type ElementTypeOrHTMLElement = ElementType | HTMLElement;
-export type ChatComponentProps<P,T extends ElementTypeOrHTMLElement> = P & (T extends ElementType ? Omit<ComponentPropsWithoutRef<T>, "children"> : Omit<HTMLAttributes<T>, "children">);
+export type ElementTypeOrHTMLElement = ElementType | HTMLElement;
+export type ChatComponentProps<P,T extends ElementTypeOrHTMLElement> = 
+  P & (T extends ElementType ? Omit<ComponentPropsWithoutRef<T>, "children" | keyof P> : Omit<HTMLAttributes<T>, "children" | keyof P>);
 
-export type ChatComponentPropsRef<P,T extends ElementTypeOrHTMLElement> = P  & (T extends ElementType ? Omit<ComponentPropsWithRef<T>, "children"> : Omit<DetailedHTMLProps<HTMLAttributes<T>,T>, "children">);
+export type ChatComponentPropsRef<P,T extends ElementTypeOrHTMLElement> = 
+  P & (T extends ElementType ? Omit<ComponentPropsWithRef<T>, "children" | keyof P > : Omit<DetailedHTMLProps<HTMLAttributes<T>,T>, "children" | keyof P>);
 
 export type ChatComponentPropsChildren<P,T extends ElementTypeOrHTMLElement> = PropsWithChildren<ChatComponentProps<P,T>>;
 
-export type ChatComponentPropsChildrenRef<P,T extends ElementTypeOrHTMLElement> =  PropsWithChildren<ChatComponentPropsRef<P,T>>;
+export type ChatComponentPropsChildrenRef<P,T extends ElementTypeOrHTMLElement> = PropsWithChildren<ChatComponentPropsRef<P,T>>;
 
 export {Size, UserStatus, MessageType} from "./unions";
 export * from "../components/Avatar/Avatar";

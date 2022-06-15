@@ -10,12 +10,12 @@ export interface MessageInputProps {
   fancyScroll?: boolean;
   activateAfterChange?: boolean;
   autoFocus?: boolean;
-  onChange: (innerHtml: string, textContent: string, innerText: string, nodes: NodeList) => void;
-  onSend: (innerHtml: string, textContent: string, innerText: string, nodes: NodeList) => void;
+  onChange?: (innerHtml: string, textContent: string, innerText: string, nodes: NodeList) => void;
+  onSend?: (innerHtml: string, textContent: string, innerText: string, nodes: NodeList) => void;
   sendButton?: boolean;
   attachButton?: boolean;
   attachDisabled?: boolean;
-  onAttachClick: (evt: MouseEvent<HTMLButtonElement>) => void;
+  onAttachClick?: (evt: MouseEvent<HTMLButtonElement>) => void;
 }
 
 export declare const MessageInput: (props: ChatComponentPropsRef<MessageInputProps, "div">) => ReactElement;
