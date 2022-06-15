@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.2...v1.9.3) (2022-06-15)
+
+
+### Bug Fixes
+
+* **typings:** base components props intersection with html components props ([6637245](https://github.com/chatscope/chat-ui-kit-react/commit/663724576eed76a09cc832d61200076bd3c1e96e))
+
 ## [1.9.2](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.1...v1.9.2) (2022-06-14)
 
 
