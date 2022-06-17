@@ -90,6 +90,10 @@ UMD usage is documented in our [Storybook](https://chatscope.io/storybook/react/
 
 Check our friendly [Storybook](https://chatscope.io/storybook/react/).
 
+## Typescript
+
+The library is written in Javascript, but Typescript typings are available in the package since version 1.9.3.
+
 ## See also
 
 [@chatscope/use-chat](https://github.com/chatscope/use-chat) is a React hook for state management in chat applications.  
