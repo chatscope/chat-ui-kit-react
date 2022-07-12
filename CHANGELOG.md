@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.5](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.4...v1.9.5) (2022-07-12)
+
+
+### Bug Fixes
+
+* **typings:** wrong TypingIndicator export ([de99cd8](https://github.com/chatscope/chat-ui-kit-react/commit/de99cd860e3baa9af7c3ad0145d397e28225c6c5))
+
 ## [1.9.4](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.3...v1.9.4) (2022-07-12)
 
 
