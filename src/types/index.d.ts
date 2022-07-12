@@ -39,4 +39,4 @@ export * from "../components/Search/Search";
 export * from "../components/Sidebar/Sidebar";
 export * from "../components/Status/Status";
 export * from "../components/StatusList/StatusList";
-export * from "../components/TypingIndicator";
+export * from "../components/TypingIndicator/TypingIndicator";
