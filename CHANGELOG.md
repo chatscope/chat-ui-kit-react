@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.4](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.3...v1.9.4) (2022-07-12)
+
+
+### Bug Fixes
+
+* [#71](https://github.com/chatscope/chat-ui-kit-react/issues/71) official support for react 18.2.0 ([cbab8b4](https://github.com/chatscope/chat-ui-kit-react/commit/cbab8b42c00f18b296e0bc4a55f3828f105f92f8))
+
 ## [1.9.3](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.2...v1.9.3) (2022-06-15)
 
 
