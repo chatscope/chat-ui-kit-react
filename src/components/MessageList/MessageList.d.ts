@@ -1,5 +1,9 @@
 import type {ReactElement, ReactNode} from "react";
-import type {ChatComponentPropsChildrenRef} from "../../types";
+import type {ChatComponentPropsChildrenRef, ChatComponentPropsChildren, EmptyProps} from "../../types";
+
+export type MessageListContentProps = EmptyProps;
+
+declare const MessageListContent: (props:ChatComponentPropsChildren<MessageListContentProps, "div">) => ReactElement;
 
 export interface MessageListOwnProps {
   typingIndicator?: ReactNode;
@@ -16,6 +20,14 @@ export interface MessageListOwnProps {
 
 export type MessageListProps = ChatComponentPropsChildrenRef<MessageListOwnProps, "div">
 
-export declare const MessageList: (props:MessageListProps) => ReactElement;
+declare const MessageList: {
+  (props:MessageListProps):ReactElement;
+  Content: typeof MessageListContent;
+};
+
+export {
+  MessageListContent,
+  MessageList
+};
 
 export default MessageList;
