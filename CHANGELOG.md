@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.6](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.5...v1.9.6) (2022-07-13)
+
+
+### Bug Fixes
+
+* **types:** added missing export of MessageListContent ([213b15d](https://github.com/chatscope/chat-ui-kit-react/commit/213b15d9229714528095748c57e7e04c67da9582))
+
 ## [1.9.5](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.4...v1.9.5) (2022-07-12)
 
 
