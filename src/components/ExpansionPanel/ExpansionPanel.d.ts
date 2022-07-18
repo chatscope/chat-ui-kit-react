@@ -1,11 +1,11 @@
 import type {ReactElement} from "react";
-import type {ChatComponentProps} from "../../types";
+import type {ChatComponentPropsChildren} from "../../types";
 
 export interface ExpansionPanelProps {
     title?:string;
     open?:boolean;
 }
 
-export declare const ExpansionPanel: (props:ChatComponentProps<ExpansionPanelProps,"div">) => ReactElement;
+export declare const ExpansionPanel: (props:ChatComponentPropsChildren<ExpansionPanelProps,"div">) => ReactElement;
 
 export default ExpansionPanel;
