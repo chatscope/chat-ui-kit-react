@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.7](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.6...v1.9.7) (2022-07-18)
+
+
+### Bug Fixes
+
+* **types:** fixed typings for ExpansionPanel ([9f9411f](https://github.com/chatscope/chat-ui-kit-react/commit/9f9411f77d031b0ccac9d4a17ba844e966a30c50))
+
 ## [1.9.6](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.5...v1.9.6) (2022-07-13)
 
 
