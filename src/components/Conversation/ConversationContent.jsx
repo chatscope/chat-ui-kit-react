@@ -29,23 +29,33 @@ export const ConversationContent = ({
   children,
   className,
   ...rest
-}) => (
-  <div {...rest} className={classNames(`${cName}__content`, className)}>
-    {React.Children.count(children) > 0 ? (
-      children
-    ) : (
-      <>
-        <div className={`${cName}__name`}>{name}</div>
-        <div className={`${cName}__info`}>
-          {typeof lastSenderName === "string" && (
-            <LastSenderName name={lastSenderName} />
-          )}{" "}
-          {typeof info !== "undefined" && <InfoContent info={info} />}
-        </div>
-      </>
-    )}
-  </div>
-);
+}) => {
+  const typeofLastSenderName = typeof lastSenderName;
+
+  return (
+    <div {...rest} className={classNames(`${cName}__content`, className)}>
+      {React.Children.count(children) > 0 ? (
+        children
+      ) : (
+        <>
+          <div className={`${cName}__name`}>{name}</div>
+          <div className={`${cName}__info`}>
+            {typeofLastSenderName !== "undefined" ? (
+              <>
+                {typeofLastSenderName === "string" ? (
+                  <LastSenderName name={lastSenderName} />
+                ) : (
+                  lastSenderName
+                )}{" "}
+              </>
+            ) : null}
+            {typeof info !== "undefined" && <InfoContent info={info} />}
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
 
 ConversationContent.displayName = "Conversation.Content";
 
