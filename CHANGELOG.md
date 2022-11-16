@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.8](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.7...v1.9.8) (2022-11-16)
+
+
+### Bug Fixes
+
+* **#76:** rendering lastSenderName as a ReactNode ([20d09fd](https://github.com/chatscope/chat-ui-kit-react/commit/20d09fdb433dd3cf50611962bca48032942e3191)), closes [#76](https://github.com/chatscope/chat-ui-kit-react/issues/76)
+
 ## [1.9.7](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.6...v1.9.7) (2022-07-18)
 
 
