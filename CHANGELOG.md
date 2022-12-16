@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.9.9](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.8...v1.9.9) (2022-12-16)
+
+
+### Bug Fixes
+
+* **types:** fixed typings for TypingIndicator, content can be a ReactNode ([4f5d2db](https://github.com/chatscope/chat-ui-kit-react/commit/4f5d2db26a7d5624042b689d27d70e09407cc43b))
+
 ## [1.9.8](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.7...v1.9.8) (2022-11-16)
 
 
