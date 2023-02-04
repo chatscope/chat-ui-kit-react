@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [1.10.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.9...v1.10.0) (2023-02-04)
+
+
+### Features
+
+* **expansion-panel:** added controlled opening state ([63c725b](https://github.com/chatscope/chat-ui-kit-react/commit/63c725bec4bf44406a1622caffdf759be184bbbc))
+
 ## [1.9.9](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.8...v1.9.9) (2022-12-16)
 
 
