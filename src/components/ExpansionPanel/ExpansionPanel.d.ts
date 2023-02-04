@@ -10,6 +10,6 @@ export interface ExpansionPanelProps<IsOpened extends boolean | undefined = unde
     onChange?: ExpansionPanelOnChangeHandler<IsOpened>;   
 }
 
-export declare const ExpansionPanel: (props:ChatComponentPropsChildren<ExpansionPanelProps,"div">) => ReactElement;
+export declare const ExpansionPanel: <IsOpened extends boolean | undefined>(props:ChatComponentPropsChildren<ExpansionPanelProps<IsOpened>,"div">) => ReactElement;
 
 export default ExpansionPanel;
