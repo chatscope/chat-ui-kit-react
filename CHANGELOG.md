@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [1.10.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.10.0...v1.10.1) (2023-02-04)
+
+
+### Bug Fixes
+
+* **typings:** expansion panel generic ([7bb6c0b](https://github.com/chatscope/chat-ui-kit-react/commit/7bb6c0b9c6da10a956e1637c041cbc5484d4ad33))
+
 # [1.10.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.9.9...v1.10.0) (2023-02-04)
 
 
