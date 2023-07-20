@@ -24,6 +24,4 @@ MessageTextContent.propTypes = {
   className: PropTypes.string,
 };
 
-MessageTextContent.defaultProps = {};
-
 export default MessageTextContent;

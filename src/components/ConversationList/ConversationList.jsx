@@ -9,12 +9,12 @@ import Loader from "../Loader";
 import Conversation from "../Conversation";
 
 export const ConversationList = ({
-  children,
-  scrollable,
-  loading,
-  loadingMore,
+  children = [],
+  scrollable = true,
+  loading = false,
+  loadingMore = false,
   onYReachEnd,
-  className,
+  className = "",
   ...props
 }) => {
   const cName = `${prefix}-conversation-list`;
@@ -96,14 +96,6 @@ ConversationList.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ConversationList.defaultProps = {
-  children: [],
-  scrollable: true,
-  loading: false,
-  loadingMore: false,
-  className: "",
 };
 
 export default ConversationList;

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 
-export const Overlay = ({ className, children, blur, grayscale, ...rest }) => {
+export const Overlay = ({ className = "", children = undefined, blur = false, grayscale = false, ...rest }) => {
   const cName = `${prefix}-overlay`;
   const blurClass = `${cName}--blur`;
   const grayscaleClass = `${cName}--grayscale`;
@@ -41,13 +41,6 @@ Overlay.propTypes = {
    * This feature is experimental and have limited browser support
    */
   grayscale: PropTypes.bool,
-};
-
-Overlay.defaultProps = {
-  className: "",
-  children: undefined,
-  blur: false,
-  grayscale: false,
 };
 
 export default Overlay;

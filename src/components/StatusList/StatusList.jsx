@@ -7,7 +7,7 @@ import Status from "../Status";
 import { prefix } from "../settings";
 
 function StatusListInner(
-  { className, children, size, selected, onChange, itemsTabIndex, ...rest },
+  { className, children, size, selected, onChange = noop, itemsTabIndex, ...rest },
   ref
 ) {
   const cName = `${prefix}-status-list`;
@@ -114,12 +114,6 @@ StatusList.propTypes = {
 };
 
 StatusListInner.propTypes = StatusList.propTypes;
-
-StatusList.defaultProps = {
-  onChange: noop,
-};
-
-StatusListInner.defaultProps = StatusList.defaultProps;
 
 export { StatusList };
 export default StatusList;

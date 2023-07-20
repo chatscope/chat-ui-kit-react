@@ -9,7 +9,7 @@ import { faArrowRight } from "@fortawesome/free-solid-svg-icons/faArrowRight";
 import { faArrowDown } from "@fortawesome/free-solid-svg-icons/faArrowDown";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons/faArrowLeft";
 
-export const ArrowButton = ({ className, direction, children, ...rest }) => {
+export const ArrowButton = ({ className = "", direction = "right", children, ...rest }) => {
   const cName = `${prefix}-button--arrow`;
 
   const icon = (() => {
@@ -45,11 +45,6 @@ ArrowButton.propTypes = {
   className: PropTypes.string,
 
   direction: PropTypes.oneOf(["up", "right", "down", "left"]),
-};
-
-ArrowButton.defaultProps = {
-  className: "",
-  direction: "right",
 };
 
 export default ArrowButton;

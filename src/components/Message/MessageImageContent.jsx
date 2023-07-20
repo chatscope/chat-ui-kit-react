@@ -47,6 +47,4 @@ MessageImageContent.propTypes = {
   className: PropTypes.string,
 };
 
-MessageImageContent.defaultProps = {};
-
 export default MessageImageContent;

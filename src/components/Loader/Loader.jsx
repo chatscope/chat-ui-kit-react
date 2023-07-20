@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 
-export const Loader = ({ className, variant, children, ...rest }) => {
+export const Loader = ({ className = undefined, variant = "default", children = undefined, ...rest }) => {
   const cName = `${prefix}-loader`;
   const textClass =
     React.Children.count(children) > 0 ? `${cName}--content` : "";
@@ -32,12 +32,6 @@ Loader.propTypes = {
 
   /** Loader variant */
   variant: PropTypes.oneOf(["default"]),
-};
-
-Loader.defaultProps = {
-  className: undefined,
-  title: undefined,
-  variant: "default",
 };
 
 export default Loader;

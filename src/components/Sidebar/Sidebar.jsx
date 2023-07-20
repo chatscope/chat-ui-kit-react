@@ -7,11 +7,11 @@ import Overlay from "../Overlay";
 import Loader from "../Loader";
 
 export const Sidebar = ({
-  children,
-  position,
-  scrollable,
-  loading,
-  className,
+  children = undefined,
+  position = undefined,
+  scrollable = true,
+  loading = false,
+  className = "",
   ...props
 }) => {
   const cName = `${prefix}-sidebar`;
@@ -71,14 +71,6 @@ Sidebar.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-Sidebar.defaultProps = {
-  children: undefined,
-  position: undefined,
-  scrollable: true,
-  loading: false,
-  className: "",
 };
 
 export default Sidebar;

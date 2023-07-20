@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 
-export const MessageGroupFooter = ({ children, className, ...rest }) => {
+export const MessageGroupFooter = ({ children = undefined, className, ...rest }) => {
   const cName = `${prefix}-message-group__footer`;
 
   return (
@@ -21,10 +21,6 @@ MessageGroupFooter.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageGroupFooter.defaultProps = {
-  children: undefined,
 };
 
 export default MessageGroupFooter;

@@ -7,9 +7,9 @@ import { faChevronLeft } from "@fortawesome/free-solid-svg-icons/faChevronLeft";
 import { faChevronDown } from "@fortawesome/free-solid-svg-icons/faChevronDown";
 
 export const ExpansionPanel = ({
-  children,
-  title,
-  open: defaultOpen,
+  children = undefined,
+  title = "",
+  open: defaultOpen = false,
   isOpened,
   onChange,
   className,
@@ -76,10 +76,6 @@ ExpansionPanel.propTypes = {
   onChange: PropTypes.func,
 };
 
-ExpansionPanel.defaultProps = {
-  children: undefined,
-  title: "",
-  open: false,
-};
+
 
 export default ExpansionPanel;

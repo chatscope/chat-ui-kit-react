@@ -23,7 +23,7 @@ const useControlledOrNot = (initialValue, value) => {
 };
 
 function SearchInner(
-  { placeholder, value, onChange, onClearClick, className, disabled, ...rest },
+  { placeholder = "", value = undefined, onChange = () => {}, onClearClick = () => {}, className, disabled = false, ...rest },
   ref
 ) {
   const cName = `${prefix}-search`;
@@ -128,16 +128,6 @@ Search.propTypes = {
 };
 
 SearchInner.propTypes = Search.propTypes;
-
-Search.defaultProps = {
-  placeholder: "",
-  value: undefined,
-  onChange: () => {},
-  onClearClick: () => {},
-  disabled: false,
-};
-
-SearchInner.defaultProps = Search.defaultProps;
 
 export { Search };
 export default Search;

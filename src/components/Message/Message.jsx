@@ -16,17 +16,17 @@ import MessageTextContent from "./MessageTextContent";
  */
 export const Message = ({
   model: {
-    message,
-    sentTime,
-    sender,
-    direction,
+    message = "",
+    sentTime = "",
+    sender = "",
+    direction = 1,
     position,
     type: modelType,
     payload: modelPayload,
   },
-  avatarSpacer,
-  avatarPosition,
-  type,
+  avatarSpacer = false,
+  avatarPosition = undefined,
+  type = "html",
   payload: argPayload,
   children,
   className,
@@ -293,17 +293,7 @@ Message.propTypes = {
   ]),
 };
 
-Message.defaultProps = {
-  model: {
-    message: "",
-    sentTime: "",
-    sender: "",
-    direction: 1,
-  },
-  avatarSpacer: false,
-  avatarPosition: undefined,
-  type: "html",
-};
+
 
 Message.Header = MessageHeader;
 Message.HtmlContent = MessageHtmlContent;

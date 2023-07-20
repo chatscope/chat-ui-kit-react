@@ -5,9 +5,9 @@ import { prefix } from "../settings";
 import { isChildrenNil } from "../utils";
 
 export const MessageSeparator = ({
-  content,
-  as,
-  children,
+  content = undefined,
+  as = "div",
+  children = undefined,
   className,
   ...rest
 }) => {
@@ -17,7 +17,7 @@ export const MessageSeparator = ({
     if (typeof as === "string" && as.length > 0) {
       return as;
     } else {
-      return MessageSeparator.defaultProps.as;
+      return "div";
     }
   })();
 
@@ -40,12 +40,6 @@ MessageSeparator.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageSeparator.defaultProps = {
-  children: undefined,
-  content: undefined,
-  as: "div",
 };
 
 export default MessageSeparator;

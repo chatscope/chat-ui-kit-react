@@ -4,11 +4,11 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 
 export const Button = ({
-  children,
-  className,
-  icon,
-  border,
-  labelPosition,
+  children = undefined,
+  className = "",
+  icon = undefined,
+  border = false,
+  labelPosition = undefined,
   ...rest
 }) => {
   const cName = `${prefix}-button`;
@@ -42,14 +42,6 @@ Button.propTypes = {
   icon: PropTypes.node,
   labelPosition: PropTypes.oneOf(["left", "right"]),
   border: PropTypes.bool,
-};
-
-Button.defaultProps = {
-  children: undefined,
-  className: "",
-  icon: undefined,
-  labelPosition: undefined,
-  border: false,
 };
 
 export default Button;

@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 
-export const TypingIndicator = ({ content, className, ...rest }) => {
+export const TypingIndicator = ({ content = "", className, ...rest }) => {
   const cName = `${prefix}-typing-indicator`;
 
   return (
@@ -24,10 +24,6 @@ TypingIndicator.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-TypingIndicator.defaultProps = {
-  content: "",
 };
 
 export default TypingIndicator;

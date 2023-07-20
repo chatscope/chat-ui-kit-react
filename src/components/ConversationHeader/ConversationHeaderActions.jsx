@@ -3,7 +3,7 @@ import PropTypes from "prop-types";
 import { prefix } from "../settings";
 import classNames from "classnames";
 
-export const ConversationHeaderActions = ({ children, className, ...rest }) => {
+export const ConversationHeaderActions = ({ children = undefined, className, ...rest }) => {
   const cName = `${prefix}-conversation-header__actions`;
 
   return (
@@ -21,10 +21,6 @@ ConversationHeaderActions.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ConversationHeaderActions.defaultProps = {
-  children: undefined,
 };
 
 export default ConversationHeaderActions;

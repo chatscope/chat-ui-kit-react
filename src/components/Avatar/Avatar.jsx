@@ -6,7 +6,7 @@ import { Status } from "../Status/Status";
 import { SizeEnum, StatusEnum } from "../enums";
 
 function AvatarInner(
-  { name, src, size, status, className, active, children, ...rest },
+  { name = "", src = "", size = "md", status, className, active = false, children, ...rest },
   ref
 ) {
   const cName = `${prefix}-avatar`;
@@ -71,15 +71,6 @@ Avatar.propTypes = {
 };
 
 AvatarInner.propTypes = Avatar.propTypes;
-
-AvatarInner.defaultProps = {
-  name: "",
-  src: "",
-  size: "md",
-  active: false,
-};
-
-Avatar.defaultProps = AvatarInner.defaultProps;
 
 export { Avatar };
 export default Avatar;
