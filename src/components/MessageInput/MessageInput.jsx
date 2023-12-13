@@ -14,6 +14,7 @@ import ContentEditable from "../ContentEditable";
 import SendButton from "../Buttons/SendButton";
 import AttachmentButton from "../Buttons/AttachmentButton";
 import PerfectScrollbar from "../Scroll";
+import StartOverButton from "../Buttons/StartOverButton";
 
 // Because container depends on fancyScroll
 // it must be wrapped in additional container
@@ -82,6 +83,7 @@ function MessageInputInner(
     sendButton,
     attachButton,
     onAttachClick,
+    resetMessageHistory,
     ...rest
   },
   ref
@@ -175,8 +177,7 @@ function MessageInputInner(
   };
 
   const cName = `${prefix}-message-input`,
-    ph =
-      typeof placeholder === "string" ? "THIS IS A TEST!!" : "THIS IS A TEST!!";
+    ph = typeof placeholder === "string" ? placeholder : "";
 
   return (
     <div
@@ -222,6 +223,13 @@ function MessageInputInner(
           />
         </div>
       )}
+      <div className={`${cName}__tools`}>
+        <StartOverButton
+          onClick={send}
+          disabled={disabled === true || stateSendDisabled === true}
+          resetMessageHistory={resetMessageHistory}
+        />
+      </div>
     </div>
   );
 }
