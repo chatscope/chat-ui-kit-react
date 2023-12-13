@@ -175,7 +175,8 @@ function MessageInputInner(
   };
 
   const cName = `${prefix}-message-input`,
-    ph = typeof placeholder === "string" ? placeholder : "";
+    ph =
+      typeof placeholder === "string" ? "THIS IS A TEST!!" : "THIS IS A TEST!!";
 
   return (
     <div
