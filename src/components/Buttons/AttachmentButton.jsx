@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperclip } from "@fortawesome/free-solid-svg-icons/faPaperclip";
 
-export const AttachmentButton = ({ className, children, ...rest }) => {
+export const AttachmentButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--attachment`;
 
   return (
@@ -26,10 +26,6 @@ AttachmentButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-AttachmentButton.defaultProps = {
-  className: "",
 };
 
 export default AttachmentButton;

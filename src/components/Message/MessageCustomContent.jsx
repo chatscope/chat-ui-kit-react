@@ -19,6 +19,4 @@ MessageCustomContent.propTypes = {
   className: PropTypes.string,
 };
 
-MessageCustomContent.defaultProps = {};
-
 export default MessageCustomContent;

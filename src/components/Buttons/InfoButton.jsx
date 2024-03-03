@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faInfoCircle } from "@fortawesome/free-solid-svg-icons/faInfoCircle";
 
-export const InfoButton = ({ className, children, ...rest }) => {
+export const InfoButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--info`;
 
   return (
@@ -26,10 +26,6 @@ InfoButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-InfoButton.defaultProps = {
-  className: "",
 };
 
 export default InfoButton;

@@ -7,7 +7,7 @@ import Avatar from "../Avatar";
 
 export const AvatarGroup = ({
   children,
-  size,
+  size = "md",
   className,
   max,
   activeIndex,
@@ -77,10 +77,6 @@ AvatarGroup.propTypes = {
 
   /** Bring to front on hover */
   hoverToFront: PropTypes.bool,
-};
-
-AvatarGroup.defaultProps = {
-  size: "md",
 };
 
 export default AvatarGroup;

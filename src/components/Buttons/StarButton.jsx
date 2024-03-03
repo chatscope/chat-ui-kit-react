@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faStar } from "@fortawesome/free-solid-svg-icons/faStar";
 
-export const StarButton = ({ className, children, ...rest }) => {
+export const StarButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--star`;
 
   return (
@@ -26,10 +26,6 @@ StarButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-StarButton.defaultProps = {
-  className: "",
 };
 
 export default StarButton;

@@ -18,8 +18,46 @@ const handlerNameByEvent = {
 Object.freeze(handlerNameByEvent);
 
 export default class ScrollBar extends Component {
-  constructor(props) {
-    super(props);
+  constructor({
+    className = "",
+    style = undefined,
+    option = undefined,
+    options = undefined,
+    containerRef = () => {},
+    onScrollY = undefined,
+    onScrollX = undefined,
+    onScrollUp = undefined,
+    onScrollDown = undefined,
+    onScrollLeft = undefined,
+    onScrollRight = undefined,
+    onYReachStart = undefined,
+    onYReachEnd = undefined,
+    onXReachStart = undefined,
+    onXReachEnd = undefined,
+    onSync = (ps) => ps.update(),
+    component = "div",
+    ...rest
+  }) {
+    super({
+      className,
+      style,
+      option,
+      options,
+      containerRef,
+      onScrollX,
+      onScrollY,
+      onScrollUp,
+      onScrollDown,
+      onScrollLeft,
+      onScrollRight,
+      onYReachStart,
+      onYReachEnd,
+      onXReachStart,
+      onXReachEnd,
+      onSync,
+      component,
+      ...rest
+    });
 
     this.handleRef = this.handleRef.bind(this);
     this._handlerByEvent = {};
@@ -140,26 +178,6 @@ export default class ScrollBar extends Component {
     );
   }
 }
-
-ScrollBar.defaultProps = {
-  className: "",
-  style: undefined,
-  option: undefined,
-  options: undefined,
-  containerRef: () => {},
-  onScrollY: undefined,
-  onScrollX: undefined,
-  onScrollUp: undefined,
-  onScrollDown: undefined,
-  onScrollLeft: undefined,
-  onScrollRight: undefined,
-  onYReachStart: undefined,
-  onYReachEnd: undefined,
-  onXReachStart: undefined,
-  onXReachEnd: undefined,
-  onSync: (ps) => ps.update(),
-  component: "div",
-};
 
 ScrollBar.propTypes = {
   children: PropTypes.node.isRequired,

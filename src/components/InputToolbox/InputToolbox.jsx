@@ -23,6 +23,4 @@ InputToolbox.propTypes = {
   className: PropTypes.string,
 };
 
-InputToolbox.defaultProps = {};
-
 export default InputToolbox;

@@ -5,8 +5,8 @@ import classNames from "classnames";
 import { ArrowButton } from "../Buttons";
 
 export const ConversationHeaderBack = ({
-  onClick,
-  children,
+  onClick = () => {},
+  children = undefined,
   className,
   ...rest
 }) => {
@@ -34,11 +34,6 @@ ConversationHeaderBack.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ConversationHeaderBack.defaultProps = {
-  children: undefined,
-  onClick: () => {},
 };
 
 export default ConversationHeaderBack;

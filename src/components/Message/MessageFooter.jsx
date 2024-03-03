@@ -5,9 +5,9 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 
 export const MessageFooter = ({
-  sender,
-  sentTime,
-  children,
+  sender = "",
+  sentTime = "",
+  children = undefined,
   className,
   ...rest
 }) => {
@@ -38,12 +38,6 @@ MessageFooter.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageFooter.defaultProps = {
-  sender: "",
-  sentTime: "",
-  children: undefined,
 };
 
 export default MessageFooter;

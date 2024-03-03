@@ -28,6 +28,4 @@ MessageHtmlContent.propTypes = {
   className: PropTypes.string,
 };
 
-MessageHtmlContent.defaultProps = {};
-
 export default MessageHtmlContent;

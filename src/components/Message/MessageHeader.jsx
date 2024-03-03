@@ -4,9 +4,9 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 
 export const MessageHeader = ({
-  sender,
-  sentTime,
-  children,
+  sender = "",
+  sentTime = "",
+  children = undefined,
   className,
   ...rest
 }) => {
@@ -37,12 +37,6 @@ MessageHeader.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageHeader.defaultProps = {
-  sender: "",
-  sentTime: "",
-  children: undefined,
 };
 
 export default MessageHeader;

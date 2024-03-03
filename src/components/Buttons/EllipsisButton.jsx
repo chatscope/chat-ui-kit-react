@@ -8,8 +8,8 @@ import { faEllipsisV } from "@fortawesome/free-solid-svg-icons/faEllipsisV";
 import { faEllipsisH } from "@fortawesome/free-solid-svg-icons/faEllipsisH";
 
 export const EllipsisButton = ({
-  className,
-  orientation,
+  className = "",
+  orientation = "horizontal",
   children,
   ...rest
 }) => {
@@ -36,11 +36,6 @@ EllipsisButton.propTypes = {
   className: PropTypes.string,
 
   orientation: PropTypes.oneOf(["horizontal", "vertical"]),
-};
-
-EllipsisButton.defaultProps = {
-  className: "",
-  orientation: "horizontal",
 };
 
 export default EllipsisButton;

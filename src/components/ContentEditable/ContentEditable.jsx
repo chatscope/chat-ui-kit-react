@@ -28,8 +28,8 @@ const replaceCaret = (el, activateAfterChange) => {
 };
 
 export class ContentEditable extends Component {
-  constructor(props) {
-    super(props);
+  constructor({value = undefined, placeholder = "", disabled = false, activateAfterChange = false, autoFocus = false, onChange = () => {}, onKeyPress = () => {}, ...rest}) {
+    super({value, placeholder,disabled, activateAfterChange, autoFocus, onChange, onKeyPress, ...rest});
     this.msgRef = React.createRef();
   }
 
@@ -165,16 +165,6 @@ ContentEditable.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ContentEditable.defaultProps = {
-  value: undefined,
-  placeholder: "",
-  disabled: false,
-  activateAfterChange: false,
-  autoFocus: false,
-  onChange: () => {},
-  onKeyPress: () => {},
 };
 
 export default ContentEditable;

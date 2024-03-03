@@ -8,7 +8,7 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 import PropTypes from "prop-types";
 
-export const ChatContainer = ({ children, className, ...rest }) => {
+export const ChatContainer = ({ children = undefined, className, ...rest }) => {
   const cName = `${prefix}-chat-container`;
 
   const [
@@ -52,10 +52,6 @@ ChatContainer.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ChatContainer.defaultProps = {
-  children: undefined,
 };
 
 export default ChatContainer;

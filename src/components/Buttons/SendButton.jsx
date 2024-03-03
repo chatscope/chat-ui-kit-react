@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPaperPlane } from "@fortawesome/free-solid-svg-icons/faPaperPlane";
 
-export const SendButton = ({ className, children, ...rest }) => {
+export const SendButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--send`;
 
   return (
@@ -26,10 +26,6 @@ SendButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-SendButton.defaultProps = {
-  className: "",
 };
 
 export default SendButton;

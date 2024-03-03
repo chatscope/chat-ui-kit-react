@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPhoneAlt } from "@fortawesome/free-solid-svg-icons/faPhoneAlt";
 
-export const VoiceCallButton = ({ className, children, ...rest }) => {
+export const VoiceCallButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--voicecall`;
 
   return (
@@ -26,10 +26,6 @@ VoiceCallButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-VoiceCallButton.defaultProps = {
-  className: "",
 };
 
 export default VoiceCallButton;

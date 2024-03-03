@@ -12,8 +12,18 @@ import MessageSeparator from "../MessageSeparator";
 import MessageListContent from "./MessageListContent";
 
 class MessageListInner extends React.Component {
-  constructor(props) {
-    super(props);
+  constructor({
+                typingIndicator = undefined,
+                loading = false,
+                loadingMore = false,
+                loadingMorePosition = "top",
+                disableOnYReachWhenNoScroll = false,
+                autoScrollToBottom = true,
+                autoScrollToBottomOnMount = true,
+                scrollBehavior = "auto",
+                ...rest
+  }) {
+    super({typingIndicator, loading, loadingMore, loadingMorePosition, disableOnYReachWhenNoScroll, autoScrollToBottom, autoScrollToBottomOnMount, scrollBehavior, ...rest});
 
     this.scrollPointRef = React.createRef();
     this.containerRef = React.createRef();
@@ -400,19 +410,9 @@ MessageList.propTypes = {
   className: PropTypes.string,
 };
 
-MessageList.defaultProps = {
-  typingIndicator: undefined,
-  loading: false,
-  loadingMore: false,
-  loadingMorePosition: "top",
-  disableOnYReachWhenNoScroll: false,
-  autoScrollToBottom: true,
-  autoScrollToBottomOnMount: true,
-  scrollBehavior: "auto",
-};
+
 
 MessageListInner.propTypes = MessageList.propTypes;
-MessageListInner.defaultProps = MessageList.defaultProps;
 
 MessageList.Content = MessageListContent;
 

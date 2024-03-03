@@ -4,7 +4,7 @@ import classNames from "classnames";
 
 import { prefix } from "../settings";
 
-export const MessageGroupMessages = ({ children, className, ...rest }) => {
+export const MessageGroupMessages = ({ children = undefined, className, ...rest }) => {
   const cName = `${prefix}-message-group`;
   return (
     <div {...rest} className={classNames(`${cName}__messages`, className)}>
@@ -26,10 +26,6 @@ MessageGroupMessages.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageGroupMessages.defaultProps = {
-  children: undefined,
 };
 
 export default MessageGroupMessages;

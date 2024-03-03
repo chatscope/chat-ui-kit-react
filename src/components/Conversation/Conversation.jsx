@@ -17,15 +17,15 @@ const LastActivityTime = ({ time }) => (
 const UnreadDot = () => <div className={`${cName}__unread-dot`}></div>;
 
 export const Conversation = ({
-  name,
-  unreadCnt,
-  lastSenderName,
-  info,
-  lastActivityTime,
-  unreadDot,
+  name = undefined,
+  unreadCnt = undefined,
+  lastSenderName = undefined,
+  info = undefined,
+  lastActivityTime = undefined,
+  unreadDot = false,
   children,
   className,
-  active,
+  active = false,
   ...rest
 }) => {
   const [avatar, avatarGroup, operations, content] = getChildren(children, [
@@ -116,16 +116,6 @@ Conversation.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-Conversation.defaultProps = {
-  name: undefined,
-  unreadCnt: undefined,
-  unreadDot: false,
-  lastSenderName: undefined,
-  info: undefined,
-  lastActivityTime: undefined,
-  active: false,
 };
 
 Conversation.Operations = ConversationOperations;

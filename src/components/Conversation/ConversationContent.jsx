@@ -76,6 +76,5 @@ ConversationContent.propTypes = {
   info: PropTypes.node,
 };
 
-ConversationContent.defaultProps = {};
 
 export default ConversationContent;

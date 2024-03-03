@@ -40,6 +40,4 @@ ConversationOperations.propTypes = {
   visible: PropTypes.bool,
 };
 
-ConversationOperations.defaultProps = {};
-
 export default ConversationOperations;

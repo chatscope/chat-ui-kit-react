@@ -6,7 +6,7 @@ import { prefix } from "../settings";
 
 export const Status = ({
   status,
-  size,
+  size = "md",
   className,
   name,
   selected,
@@ -56,10 +56,6 @@ Status.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-Status.defaultProps = {
-  size: "md",
 };
 
 export default Status;

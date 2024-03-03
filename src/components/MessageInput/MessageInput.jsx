@@ -67,21 +67,21 @@ const useControllableState = (value, initialValue) => {
 
 function MessageInputInner(
   {
-    value,
-    onSend,
-    onChange,
-    autoFocus,
-    placeholder,
-    fancyScroll,
+    value = undefined,
+    onSend = noop,
+    onChange = noop,
+    autoFocus = false,
+    placeholder = "",
+    fancyScroll = true,
     className,
-    activateAfterChange,
-    disabled,
+    activateAfterChange = false,
+    disabled = false,
     sendDisabled,
-    sendOnReturnDisabled,
-    attachDisabled,
-    sendButton,
-    attachButton,
-    onAttachClick,
+    sendOnReturnDisabled = false,
+    attachDisabled = false,
+    sendButton = true,
+    attachButton = true,
+    onAttachClick = noop,
     ...rest
   },
   ref
@@ -297,24 +297,6 @@ MessageInput.propTypes = {
 };
 
 MessageInputInner.propTypes = MessageInput.propTypes;
-
-MessageInput.defaultProps = {
-  value: undefined,
-  placeholder: "",
-  disabled: false,
-  sendOnReturnDisabled: false,
-  fancyScroll: true,
-  activateAfterChange: false,
-  autoFocus: false,
-  sendButton: true,
-  attachButton: true,
-  attachDisabled: false,
-  onAttachClick: noop,
-  onChange: noop,
-  onSend: noop,
-};
-
-MessageInputInner.defaultProps = MessageInput.defaultProps;
 
 export { MessageInput };
 

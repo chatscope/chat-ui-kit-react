@@ -6,7 +6,7 @@ import Button from "./Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUserPlus } from "@fortawesome/free-solid-svg-icons/faUserPlus";
 
-export const AddUserButton = ({ className, children, ...rest }) => {
+export const AddUserButton = ({ className = "", children, ...rest }) => {
   const cName = `${prefix}-button--adduser`;
 
   return (
@@ -28,10 +28,6 @@ AddUserButton.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-AddUserButton.defaultProps = {
-  className: "",
 };
 
 export default AddUserButton;

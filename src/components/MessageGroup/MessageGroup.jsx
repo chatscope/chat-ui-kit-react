@@ -9,10 +9,10 @@ import MessageGroupMessages from "./MessageGroupMessages";
 import Avatar from "../Avatar";
 
 export const MessageGroup = ({
-  direction,
-  avatarPosition,
-  sender,
-  sentTime,
+  direction = "incoming",
+  avatarPosition = undefined,
+  sender = "",
+  sentTime = "",
   children,
   className,
   ...rest
@@ -117,13 +117,6 @@ MessageGroup.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-MessageGroup.defaultProps = {
-  direction: "incoming",
-  sentTime: "",
-  sender: "",
-  avatarPosition: undefined,
 };
 
 MessageGroup.Header = MessageGroupHeader;

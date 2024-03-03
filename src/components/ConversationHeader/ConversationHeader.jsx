@@ -9,7 +9,7 @@ import ConversationHeaderActions from "./ConversationHeaderActions";
 import ConversationHeaderContent from "./ConversationHeaderContent";
 import PropTypes from "prop-types";
 
-export const ConversationHeader = ({ children, className, ...rest }) => {
+export const ConversationHeader = ({ children = undefined, className, ...rest }) => {
   const cName = `${prefix}-conversation-header`;
 
   const [back, avatar, avatarGroup, content, actions] = getChildren(children, [
@@ -56,10 +56,6 @@ ConversationHeader.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ConversationHeader.defaultProps = {
-  children: undefined,
 };
 
 ConversationHeader.Back = ConversationHeaderBack;

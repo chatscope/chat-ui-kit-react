@@ -5,9 +5,9 @@ import { prefix } from "../settings";
 
 export const ConversationHeaderContent = ({
   userName,
-  info,
-  children,
-  className,
+  info = "",
+  children = undefined,
+  className = "",
   ...rest
 }) => {
   const cName = `${prefix}-conversation-header__content`;
@@ -38,12 +38,6 @@ ConversationHeaderContent.propTypes = {
 
   /** Additional classes. */
   className: PropTypes.string,
-};
-
-ConversationHeaderContent.defaultProps = {
-  children: undefined,
-  userName: "",
-  info: "",
 };
 
 export default ConversationHeaderContent;
