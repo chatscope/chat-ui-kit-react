@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [2.0.2](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.1...v2.0.2) (2024-03-03)
+
+
+### Bug Fixes
+
+* bump github actions and semantic-release ([e87babc](https://github.com/chatscope/chat-ui-kit-react/commit/e87babc641df46937016e4fee1e08d5ebecb7b23))
+
 ## [2.0.1](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.0...v2.0.1) (2024-03-03)
 
 
