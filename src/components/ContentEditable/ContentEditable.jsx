@@ -28,8 +28,8 @@ const replaceCaret = (el, activateAfterChange) => {
 };
 
 export class ContentEditable extends Component {
-  constructor({value = undefined, placeholder = "", disabled = false, activateAfterChange = false, autoFocus = false, onChange = () => {}, onKeyPress = () => {}, ...rest}) {
-    super({value, placeholder,disabled, activateAfterChange, autoFocus, onChange, onKeyPress, ...rest});
+  constructor(props) {
+    super(props);
     this.msgRef = React.createRef();
   }
 
@@ -47,7 +47,7 @@ export class ContentEditable extends Component {
     const {
       props: { onKeyPress },
     } = this;
-    onKeyPress(evt);
+    onKeyPress?.(evt);
   };
 
   handleInput = (evt) => {
@@ -56,7 +56,7 @@ export class ContentEditable extends Component {
     } = this;
 
     const target = evt.target;
-    onChange(target.innerHTML, target.textContent, target.innerText);
+    onChange?.(target.innerHTML, target.textContent, target.innerText);
   };
 
   // Public API

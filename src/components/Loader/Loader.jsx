@@ -3,7 +3,12 @@ import PropTypes from "prop-types";
 import classNames from "classnames";
 import { prefix } from "../settings";
 
-export const Loader = ({ className = undefined, variant = "default", children = undefined, ...rest }) => {
+export const Loader = ({
+  className = undefined,
+  variant = "default",
+  children,
+  ...rest
+}) => {
   const cName = `${prefix}-loader`;
   const textClass =
     React.Children.count(children) > 0 ? `${cName}--content` : "";

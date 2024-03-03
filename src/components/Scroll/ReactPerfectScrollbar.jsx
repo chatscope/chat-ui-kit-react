@@ -18,53 +18,15 @@ const handlerNameByEvent = {
 Object.freeze(handlerNameByEvent);
 
 export default class ScrollBar extends Component {
-  constructor({
-    className = "",
-    style = undefined,
-    option = undefined,
-    options = undefined,
-    containerRef = () => {},
-    onScrollY = undefined,
-    onScrollX = undefined,
-    onScrollUp = undefined,
-    onScrollDown = undefined,
-    onScrollLeft = undefined,
-    onScrollRight = undefined,
-    onYReachStart = undefined,
-    onYReachEnd = undefined,
-    onXReachStart = undefined,
-    onXReachEnd = undefined,
-    onSync = (ps) => ps.update(),
-    component = "div",
-    ...rest
-  }) {
-    super({
-      className,
-      style,
-      option,
-      options,
-      containerRef,
-      onScrollX,
-      onScrollY,
-      onScrollUp,
-      onScrollDown,
-      onScrollLeft,
-      onScrollRight,
-      onYReachStart,
-      onYReachEnd,
-      onXReachStart,
-      onXReachEnd,
-      onSync,
-      component,
-      ...rest
-    });
-
+  constructor(props) {
+    super(props);
     this.handleRef = this.handleRef.bind(this);
     this._handlerByEvent = {};
   }
 
   componentDidMount() {
     if (this.props.option) {
+      /* eslint-disable-next-line no-console */
       console.warn(
         'react-perfect-scrollbar: the "option" prop has been deprecated in favor of "options"'
       );
@@ -139,12 +101,17 @@ export default class ScrollBar extends Component {
   }
 
   updateScroll() {
-    this.props.onSync(this._ps);
+    const onSync = this.props.onSync;
+    if (typeof onSync === "function") {
+      onSync(this._ps);
+    } else {
+      this._ps.update();
+    }
   }
 
   handleRef(ref) {
     this._container = ref;
-    this.props.containerRef(ref);
+    this.props.containerRef?.(ref);
   }
 
   render() {
@@ -169,7 +136,8 @@ export default class ScrollBar extends Component {
       children,
       ...remainProps
     } = this.props;
-    const Comp = component;
+
+    const Comp = typeof component === "undefined" ? "div" : component;
 
     return (
       <Comp style={style} ref={this.handleRef} {...remainProps}>

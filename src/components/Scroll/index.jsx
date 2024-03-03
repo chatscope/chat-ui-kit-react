@@ -1,3 +1,3 @@
-import Scrollbar from "./ReactPerfectScrollbar";
+import ScrollBar from "./ReactPerfectScrollbar";
 export * from "./ReactPerfectScrollbar";
-export default Scrollbar;
+export default ScrollBar;

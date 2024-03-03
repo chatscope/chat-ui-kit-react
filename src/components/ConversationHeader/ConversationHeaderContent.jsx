@@ -4,10 +4,10 @@ import classNames from "classnames";
 import { prefix } from "../settings";
 
 export const ConversationHeaderContent = ({
-  userName,
+  userName = "",
   info = "",
   children = undefined,
-  className = "",
+  className,
   ...rest
 }) => {
   const cName = `${prefix}-conversation-header__content`;
