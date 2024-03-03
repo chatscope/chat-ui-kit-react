@@ -1,5 +1,20 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [2.0.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.10.1...v2.0.0) (2024-03-03)
+
+
+### chore
+
+* removed default props from function components ([84a3302](https://github.com/chatscope/chat-ui-kit-react/commit/84a3302492f3f77a2ed4f68ab190c3bfad9c91e3))
+
+
+### BREAKING CHANGES
+
+* defaultProps have been removed from all function components.
+It should be backward compatible, but it's safer to release the major version.
+The default props of some internal class components have also been rewritten.
+Bumped react and react-dom to 18.2.0 in devDependencies.
+
 ## [1.10.1](https://github.com/chatscope/chat-ui-kit-react/compare/v1.10.0...v1.10.1) (2023-02-04)
 
 
