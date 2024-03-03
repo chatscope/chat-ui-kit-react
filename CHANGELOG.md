@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [2.0.1](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.0...v2.0.1) (2024-03-03)
+
+
+### Bug Fixes
+
+* bump node version in github workflow to 20 ([2695c4d](https://github.com/chatscope/chat-ui-kit-react/commit/2695c4d61eaa7009212c9b5d589bec05b09a2285))
+
 # [2.0.0](https://github.com/chatscope/chat-ui-kit-react/compare/v1.10.1...v2.0.0) (2024-03-03)
 
 
