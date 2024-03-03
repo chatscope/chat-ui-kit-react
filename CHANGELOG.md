@@ -1,5 +1,13 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [2.0.3](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.2...v2.0.3) (2024-03-03)
+
+
+### Bug Fixes
+
+* added automatically provided github token to github workflow ([3da88a0](https://github.com/chatscope/chat-ui-kit-react/commit/3da88a06f08f1c47ed55bb07f412cf6efa9993f8))
+* removed github token from github workflow ([a674c0c](https://github.com/chatscope/chat-ui-kit-react/commit/a674c0c8b648d23e9b000a5c3f40bb6f1eabb6ea))
+
 ## [2.0.2](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.1...v2.0.2) (2024-03-03)
 
 
