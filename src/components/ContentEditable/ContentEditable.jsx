@@ -113,15 +113,18 @@ export class ContentEditable extends Component {
         handleInput,
         handleKeyPress,
         innerHTML,
-        props: { placeholder, disabled, className },
+        props: { placeholder, disabled, className, plaintextOnly },
       } = this,
       ph = typeof placeholder === "string" ? placeholder : "";
+
+    const enabledContentEditable = plaintextOnly ? "plaintext-only" : true;
+    const contentEditable = disabled === false ? enabledContentEditable : false;
 
     return (
       <div
         ref={msgRef}
         className={className}
-        contentEditable={disabled === false}
+        contentEditable={contentEditable}
         disabled={disabled}
         data-placeholder={ph}
         onInput={handleInput}
@@ -141,6 +144,12 @@ ContentEditable.propTypes = {
 
   /** A input can show it is currently unable to be interacted with. */
   disabled: PropTypes.bool,
+
+  /**
+   * plaintext-only content-editable state, instead of true (when enabled).
+   * prevents pasting rich text (removes formatting from pasted text).
+   */
+  plaintextOnly: PropTypes.bool,
 
   /**
    * Sets focus element and caret at the end of input

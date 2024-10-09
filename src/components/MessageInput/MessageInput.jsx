@@ -76,6 +76,7 @@ function MessageInputInner(
     className,
     activateAfterChange = false,
     disabled = false,
+    plaintextOnly = false,
     sendDisabled,
     sendOnReturnDisabled = false,
     attachDisabled = false,
@@ -205,6 +206,7 @@ function MessageInputInner(
             ref={msgRef}
             className={`${cName}__content-editor`}
             disabled={disabled}
+            plaintextOnly={plaintextOnly}
             placeholder={ph}
             onKeyPress={handleKeyPress}
             onChange={handleChange}
@@ -237,6 +239,12 @@ MessageInput.propTypes = {
 
   /** A input can show it is currently unable to be interacted with. */
   disabled: PropTypes.bool,
+
+  /**
+   * plaintext-only content-editable state, instead of true (when enabled).
+   * prevents pasting rich text (removes formatting from pasted text).
+   */
+  plaintextOnly: PropTypes.bool,
 
   /** Prevent that the input message is sent on a return press */
   sendOnReturnDisabled: PropTypes.bool,
