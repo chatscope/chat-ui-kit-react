@@ -255,9 +255,11 @@ class MessageListInner extends React.Component {
         onYReachEnd,
         className,
         disableOnYReachWhenNoScroll,
+		/* eslint-disable @typescript-eslint/no-unused-vars */
         scrollBehavior, // Just to remove rest
         autoScrollToBottom, // Just to remove rest
         autoScrollToBottomOnMount, // Just to remove rest
+		/* eslint-enable @typescript-eslint/no-unused-vars */
         ...rest
       },
     } = this;

@@ -109,13 +109,15 @@ export default class ScrollBar extends Component {
     }
   }
 
-  handleRef(ref) {
+  handleRef = (ref) => {
     this._container = ref;
     this.props.containerRef?.(ref);
-  }
+  };
 
   render() {
     const {
+	  // This is basically just removing a whole load of unneeded props
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       className,
       style,
       option,
@@ -134,6 +136,7 @@ export default class ScrollBar extends Component {
       component,
       onSync,
       children,
+	  /* eslint-enable @typescript-eslint/no-unused-vars */
       ...remainProps
     } = this.props;
 
