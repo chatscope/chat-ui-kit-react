@@ -156,7 +156,12 @@ ScrollBar.propTypes = {
   style: PropTypes.object,
   option: PropTypes.object,
   options: PropTypes.object,
-  containerRef: PropTypes.func,
+  containerRef: PropTypes.oneOfType([
+	// Either a function
+	PropTypes.func, 
+	// Or the instance of a DOM native element (see the note about SSR)
+	PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]),
   onScrollY: PropTypes.func,
   onScrollX: PropTypes.func,
   onScrollUp: PropTypes.func,

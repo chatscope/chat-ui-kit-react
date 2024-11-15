@@ -59,9 +59,7 @@ function editorContainer() {
           forwardedRef = _this$props.forwardedRef,
           rest = _objectWithoutProperties(_this$props, _excluded);
         return /*#__PURE__*/_react["default"].createElement(_react["default"].Fragment, null, fancyScroll === true && /*#__PURE__*/_react["default"].createElement(_Scroll["default"], _extends({
-          ref: function ref(elRef) {
-            return forwardedRef.current = elRef;
-          }
+          ref: forwardedRef
         }, rest, {
           options: {
             suppressScrollX: true

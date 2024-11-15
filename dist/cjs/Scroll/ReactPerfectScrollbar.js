@@ -175,7 +175,13 @@ process.env.NODE_ENV !== "production" ? ScrollBar.propTypes = {
   style: _propTypes.PropTypes.object,
   option: _propTypes.PropTypes.object,
   options: _propTypes.PropTypes.object,
-  containerRef: _propTypes.PropTypes.func,
+  containerRef: _propTypes.PropTypes.oneOfType([
+  // Either a function
+  _propTypes.PropTypes.func,
+  // Or the instance of a DOM native element (see the note about SSR)
+  _propTypes.PropTypes.shape({
+    current: _propTypes.PropTypes.instanceOf(Element)
+  })]),
   onScrollY: _propTypes.PropTypes.func,
   onScrollX: _propTypes.PropTypes.func,
   onScrollUp: _propTypes.PropTypes.func,
