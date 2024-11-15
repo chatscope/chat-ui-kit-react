@@ -65,10 +65,10 @@ function editorContainer() {
     }]);
   }(Component);
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
-    fancyScroll: PropTypes.bool,
-    children: PropTypes.Component,
+    fancyScroll: PropTypes.bool.isRequired,
+    children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     forwardedRef: {
-      current: PropTypes.Component
+      current: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
     }
   } : void 0;
   return /*#__PURE__*/React.forwardRef(function (props, ref) {

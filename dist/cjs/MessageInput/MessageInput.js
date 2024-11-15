@@ -73,10 +73,10 @@ function editorContainer() {
     }]);
   }(_react.Component);
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
-    fancyScroll: _propTypes["default"].bool,
-    children: _propTypes["default"].Component,
+    fancyScroll: _propTypes["default"].bool.isRequired,
+    children: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].node), _propTypes["default"].node]).isRequired,
     forwardedRef: {
-      current: _propTypes["default"].Component
+      current: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].node), _propTypes["default"].node])
     }
   } : void 0;
   return /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
