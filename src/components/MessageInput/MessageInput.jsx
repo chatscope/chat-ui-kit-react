@@ -51,12 +51,12 @@ function editorContainer() {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
     ]).isRequired,
-	forwardedRef: {
+	forwardedRef: PropTypes.object({
 		current: PropTypes.oneOfType([
 			PropTypes.arrayOf(PropTypes.node),
 			PropTypes.node
 		])
-	}
+	})
 };
 
   return React.forwardRef((props, ref) => {
