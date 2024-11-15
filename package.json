@@ -76,7 +76,7 @@
   },
   "scripts": {
     "build:clean": "rm -Rf dist",
-    "build:umd": "rollup -c",
+    "build:umd": "rollup -c --bundleConfigAsCjs",
     "build:cjs": "BABEL_ENV=cjs babel src/components -d dist/cjs",
     "build:esm": "BABEL_ENV=esm babel src/components -d dist/es",
     "build": "yarn run build:clean && yarn run build:esm && yarn run build:cjs && yarn run build:umd",
