@@ -68,7 +68,7 @@ function editorContainer() {
     fancyScroll: PropTypes.bool.isRequired,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
     forwardedRef: PropTypes.object({
-      current: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node])
+      current: PropTypes.node
     })
   } : void 0;
   return /*#__PURE__*/React.forwardRef(function (props, ref) {

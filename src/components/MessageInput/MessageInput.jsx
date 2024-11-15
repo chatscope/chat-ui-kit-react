@@ -52,10 +52,7 @@ function editorContainer() {
         PropTypes.node
     ]).isRequired,
 	forwardedRef: PropTypes.object({
-		current: PropTypes.oneOfType([
-			PropTypes.arrayOf(PropTypes.node),
-			PropTypes.node
-		])
+		current: PropTypes.node
 	})
 };
 
