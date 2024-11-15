@@ -1,5 +1,4 @@
 import React, {
-  Component,
   useRef,
   useState,
   useEffect,
@@ -15,56 +14,34 @@ import SendButton from "../Buttons/SendButton";
 import AttachmentButton from "../Buttons/AttachmentButton";
 import PerfectScrollbar from "../Scroll";
 
-// Because container depends on fancyScroll
-// it must be wrapped in additional container
-function editorContainer() {
-  class Container extends Component {
-    render() {
-      const {
-        props: { fancyScroll, children, forwardedRef, ...rest },
-      } = this;
+const EditorContainer = React.forwardRef(function EditorContainer({ fancyScroll, children, ...rest }, ref) {
+  return (
+    <>
+      {fancyScroll === true && (
+        <PerfectScrollbar
+          ref={ref}
+          {...rest}
+          options={{ suppressScrollX: true }}
+        >
+            {children}
+        </PerfectScrollbar>
+      )}
+      {fancyScroll === false && (
+        <div ref={ref} {...rest}>
+          {children}
+        </div>
+      )}
+    </>
+  );
+});
 
-      return (
-        <>
-          {fancyScroll === true && (
-            <PerfectScrollbar
-              ref={forwardedRef}
-              {...rest}
-              options={{ suppressScrollX: true }}
-            >
-              {children}
-            </PerfectScrollbar>
-          )}
-          {fancyScroll === false && (
-            <div ref={forwardedRef} {...rest}>
-              {children}
-            </div>
-          )}
-        </>
-      );
-    }
-  }
-
-  Container.propTypes = {
+EditorContainer.propTypes = {
 	fancyScroll: PropTypes.bool.isRequired,
 	children: PropTypes.oneOfType([
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
-    ]).isRequired,
-	forwardedRef: PropTypes.oneOfType([
-		// Either a function
-		PropTypes.func, 
-		// Or the instance of a DOM native element (see the note about SSR)
-		PropTypes.shape({ current: PropTypes.instanceOf(Element) })
-	])
+    ]).isRequired
 };
-
-  return React.forwardRef((props, ref) => {
-    return <Container forwardedRef={ref} {...props} />;
-  });
-}
-
-const EditorContainer = editorContainer();
 
 const useControllableState = (value, initialValue) => {
   const initial = typeof value !== "undefined" ? value : initialValue;
