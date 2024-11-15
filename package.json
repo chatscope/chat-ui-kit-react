@@ -81,7 +81,8 @@
     "build:esm": "BABEL_ENV=esm babel src/components -d dist/es",
     "build": "yarn run build:clean && yarn run build:esm && yarn run build:cjs && yarn run build:umd",
     "pack": "yarn pack",
-    "watch": "chokidar 'src/**/*.*' -c 'yarn run build:esm'"
+    "watch": "chokidar 'src/**/*.*' -c 'yarn run build:esm'",
+	"postainstall": "yarn run build"
   },
   "dependencies": {
     "@chatscope/chat-ui-kit-styles": "^1.4.0",
