@@ -67,9 +67,13 @@ function editorContainer() {
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
     fancyScroll: PropTypes.bool.isRequired,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    forwardedRef: PropTypes.shape({
-      current: PropTypes.node
-    })
+    forwardedRef: PropTypes.oneOfType([
+    // Either a function
+    PropTypes.func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    PropTypes.shape({
+      current: PropTypes.instanceOf(Element)
+    })])
   } : void 0;
   return /*#__PURE__*/React.forwardRef(function (props, ref) {
     return /*#__PURE__*/React.createElement(Container, _extends({

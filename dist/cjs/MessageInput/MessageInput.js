@@ -75,9 +75,13 @@ function editorContainer() {
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
     fancyScroll: _propTypes["default"].bool.isRequired,
     children: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].node), _propTypes["default"].node]).isRequired,
-    forwardedRef: _propTypes["default"].shape({
-      current: _propTypes["default"].node
-    })
+    forwardedRef: _propTypes["default"].oneOfType([
+    // Either a function
+    _propTypes["default"].func,
+    // Or the instance of a DOM native element (see the note about SSR)
+    _propTypes["default"].shape({
+      current: _propTypes["default"].instanceOf(Element)
+    })])
   } : void 0;
   return /*#__PURE__*/_react["default"].forwardRef(function (props, ref) {
     return /*#__PURE__*/_react["default"].createElement(Container, _extends({
