@@ -15,6 +15,8 @@ import { faTimes } from "@fortawesome/free-solid-svg-icons";
 const useControlledOrNot = (initialValue, value) => {
   if (typeof value === "undefined") {
     // Uncontrolled
+	// TODO: This isn't a great way of doing this - breaks the rules of hooks!
+    // eslint-disable-next-line react-hooks/rules-of-hooks
     return useState(initialValue);
   } else {
     // Controlled
@@ -28,7 +30,7 @@ function SearchInner(
 ) {
   const cName = `${prefix}-search`;
 
-  const isControlled = useMemo(() => typeof value !== "undefined", []);
+  const isControlled = useMemo(() => typeof value !== "undefined", [value]);
 
   const [searchValue, setSearchValue] = useControlledOrNot("", value);
 
@@ -37,7 +39,7 @@ function SearchInner(
   );
 
   if (isControlled !== (typeof value !== "undefined")) {
-    throw "Search: Changing from controlled to uncontrolled component and vice versa is not allowed";
+    throw new Error("Search: Changing from controlled to uncontrolled component and vice versa is not allowed");
   }
 
   const inputRef = useRef(undefined);

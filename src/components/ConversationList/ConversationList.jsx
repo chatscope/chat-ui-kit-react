@@ -21,7 +21,7 @@ export const ConversationList = ({
 
   // Memoize, to avoid re-render each time when props (children) changed
   const Tag = useMemo(
-    () => ({ children }) => {
+    () => function Tag({ children }) {
       // PerfectScrollbar for now cant be disabled, so render div instead of disabling it
       // https://github.com/goldenyz/react-perfect-scrollbar/issues/107
       if (scrollable === false || (scrollable === true && loading === true)) {
@@ -46,7 +46,7 @@ export const ConversationList = ({
         );
       }
     },
-    [scrollable, loading]
+    [scrollable, loading, onYReachEnd]
   );
 
   return (

@@ -76,6 +76,8 @@ function StatusListInner(
         })();
 
         return (
+		  // TODO: This needs doing better
+          // eslint-disable-next-line jsx-a11y/no-noninteractive-element-interactions
           <li tabIndex={tIndex} onKeyPress={onKeyPress}>
             {React.cloneElement(item, newProps)}
           </li>

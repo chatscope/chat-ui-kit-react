@@ -11,5 +11,5 @@
     "checkJs": false,
     "allowJs": true
   },
-  "include": ["src/**/*"]
+  "include": ["src/**/*", "./*.config.*"]
 }

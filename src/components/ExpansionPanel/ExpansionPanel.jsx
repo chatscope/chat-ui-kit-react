@@ -38,12 +38,18 @@ export const ExpansionPanel = ({
         onChange?.(!opened, e);
       }
     },
-    [onChange, open, opened, isOpened]
+    [onChange, opened, isOpened]
   );
+
+  const onKeyDown = useCallback((ev) => {
+	if (ev.code && ev.code.toLowerCase() === "enter") {
+		handleOpen(ev);
+	}
+  }, [handleOpen]);
 
   return (
     <div {...rest} className={classNames(cName, openModifier, className)}>
-      <div className={`${cName}__header`} onClick={handleOpen}>
+      <div className={`${cName}__header`} onClick={handleOpen} role="button" tabIndex="0" onKeyDown={onKeyDown}>
         <div className={`${cName}__title`}>{title}</div>
         <div className={`${cName}__icon`}>
           <FontAwesomeIcon icon={icon} />

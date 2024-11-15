@@ -109,13 +109,15 @@ export default class ScrollBar extends Component {
     }
   }
 
-  handleRef(ref) {
+  handleRef = (ref) => {
     this._container = ref;
     this.props.containerRef?.(ref);
-  }
+  };
 
   render() {
     const {
+	  // This is basically just removing a whole load of unneeded props
+      /* eslint-disable @typescript-eslint/no-unused-vars */
       className,
       style,
       option,
@@ -134,6 +136,7 @@ export default class ScrollBar extends Component {
       component,
       onSync,
       children,
+	  /* eslint-enable @typescript-eslint/no-unused-vars */
       ...remainProps
     } = this.props;
 
@@ -153,7 +156,12 @@ ScrollBar.propTypes = {
   style: PropTypes.object,
   option: PropTypes.object,
   options: PropTypes.object,
-  containerRef: PropTypes.func,
+  containerRef: PropTypes.oneOfType([
+	// Either a function
+	PropTypes.func, 
+	// Or the instance of a DOM native element (see the note about SSR)
+	PropTypes.shape({ current: PropTypes.instanceOf(Element) })
+  ]),
   onScrollY: PropTypes.func,
   onScrollX: PropTypes.func,
   onScrollUp: PropTypes.func,
