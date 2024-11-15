@@ -67,7 +67,7 @@ function editorContainer() {
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
     fancyScroll: PropTypes.bool.isRequired,
     children: PropTypes.oneOfType([PropTypes.arrayOf(PropTypes.node), PropTypes.node]).isRequired,
-    forwardedRef: PropTypes.object({
+    forwardedRef: PropTypes.shape({
       current: PropTypes.node
     })
   } : void 0;

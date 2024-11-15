@@ -51,7 +51,7 @@ function editorContainer() {
         PropTypes.arrayOf(PropTypes.node),
         PropTypes.node
     ]).isRequired,
-	forwardedRef: PropTypes.object({
+	forwardedRef: PropTypes.shape({
 		current: PropTypes.node
 	})
 };

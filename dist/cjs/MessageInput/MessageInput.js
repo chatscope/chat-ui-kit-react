@@ -75,7 +75,7 @@ function editorContainer() {
   process.env.NODE_ENV !== "production" ? Container.propTypes = {
     fancyScroll: _propTypes["default"].bool.isRequired,
     children: _propTypes["default"].oneOfType([_propTypes["default"].arrayOf(_propTypes["default"].node), _propTypes["default"].node]).isRequired,
-    forwardedRef: _propTypes["default"].object({
+    forwardedRef: _propTypes["default"].shape({
       current: _propTypes["default"].node
     })
   } : void 0;
