@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+# [2.1.0](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.3...v2.1.0) (2025-05-15)
+
+
+### Features
+
+* upgrade fontawesome libs for fix defaultProps warning ([6d5adff](https://github.com/chatscope/chat-ui-kit-react/commit/6d5adffa412eb2f0c551b3cb875133aae54b3370))
+
 ## [2.0.3](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.2...v2.0.3) (2024-03-03)
 
 
