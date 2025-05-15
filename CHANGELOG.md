@@ -1,5 +1,12 @@
 # @chatscope/chat-ui-kit-react changelog
 
+## [2.1.1](https://github.com/chatscope/chat-ui-kit-react/compare/v2.1.0...v2.1.1) (2025-05-15)
+
+
+### Bug Fixes
+
+* add react 19 to peer dependencies ([#171](https://github.com/chatscope/chat-ui-kit-react/issues/171)) ([95a96c1](https://github.com/chatscope/chat-ui-kit-react/commit/95a96c15ad7506c9567c98f1ea7f60b49a94d38c))
+
 # [2.1.0](https://github.com/chatscope/chat-ui-kit-react/compare/v2.0.3...v2.1.0) (2025-05-15)
 
 
