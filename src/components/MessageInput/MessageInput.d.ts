@@ -5,6 +5,7 @@ export interface MessageInputProps {
   value?: string;
   placeholder?: string;
   disabled?: boolean;
+  plaintextOnly?: boolean;
   sendOnReturnDisabled?: boolean;
   sendDisabled?: boolean;
   fancyScroll?: boolean;
